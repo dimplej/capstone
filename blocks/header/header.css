@@ -6,6 +6,7 @@ header .nav-wrapper {
   position: fixed;
 }
 
+
 header nav {
   box-sizing: border-box;
   display: grid;
@@ -94,7 +95,7 @@ header nav .nav-hamburger-icon::after {
 header nav[aria-expanded='false'] .nav-hamburger-icon,
 header nav[aria-expanded='false'] .nav-hamburger-icon::before,
 header nav[aria-expanded='false'] .nav-hamburger-icon::after {
-  height: 2px;
+  height: 3px;
   border-radius: 2px;
   background: currentcolor;
 }
@@ -113,9 +114,9 @@ header nav[aria-expanded='true'] .nav-hamburger-icon {
 
 header nav[aria-expanded='true'] .nav-hamburger-icon::before,
 header nav[aria-expanded='true'] .nav-hamburger-icon::after {
-  top: 3px;
-  left: 1px;
-  transform: rotate(45deg);
+  top: 4px;
+  left: 10px;
+  transform: rotate(90deg);
   transform-origin: 2px 1px;
   width: 24px;
   height: 2px;
@@ -224,6 +225,7 @@ header nav .nav-sections ul > li > ul > li {
     margin: 0;
   }
 
+  
   header nav .nav-sections .default-content-wrapper > ul > li {
     flex: 0 1 auto;
     position: relative;
@@ -261,6 +263,7 @@ header nav .nav-sections ul > li > ul > li {
     padding: 8px 0;
   }
 }
+
 
 /* tools */
 header nav .nav-tools {
