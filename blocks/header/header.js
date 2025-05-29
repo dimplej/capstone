@@ -10,11 +10,9 @@ function closeOnEscape(e) {
     const navSections = nav.querySelector('.nav-sections');
     const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
     if (navSectionExpanded && isDesktop.matches) {
-      // eslint-disable-next-line no-use-before-define
       toggleAllNavSections(navSections);
       navSectionExpanded.focus();
     } else if (!isDesktop.matches) {
-      // eslint-disable-next-line no-use-before-define
       toggleMenu(nav, navSections);
       nav.querySelector('button').focus();
     }
@@ -27,10 +25,8 @@ function closeOnFocusLost(e) {
     const navSections = nav.querySelector('.nav-sections');
     const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
     if (navSectionExpanded && isDesktop.matches) {
-      // eslint-disable-next-line no-use-before-define
       toggleAllNavSections(navSections, false);
     } else if (!isDesktop.matches) {
-      // eslint-disable-next-line no-use-before-define
       toggleMenu(nav, navSections, false);
     }
   }
@@ -41,7 +37,6 @@ function openOnKeydown(e) {
   const isNavDrop = focused.className === 'nav-drop';
   if (isNavDrop && (e.code === 'Enter' || e.code === 'Space')) {
     const dropExpanded = focused.getAttribute('aria-expanded') === 'true';
-    // eslint-disable-next-line no-use-before-define
     toggleAllNavSections(focused.closest('.nav-sections'));
     focused.setAttribute('aria-expanded', dropExpanded ? 'false' : 'true');
   }
@@ -75,7 +70,7 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
   toggleAllNavSections(navSections, expanded || isDesktop.matches ? 'false' : 'true');
   button.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
-  // enable nav dropdown keyboard accessibility
+
   const navDrops = navSections.querySelectorAll('.nav-drop');
   if (isDesktop.matches) {
     navDrops.forEach((drop) => {
@@ -91,11 +86,8 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
     });
   }
 
-  // enable menu collapse on escape keypress
   if (!expanded || isDesktop.matches) {
-    // collapse menu on escape press
     window.addEventListener('keydown', closeOnEscape);
-    // collapse menu on focus lost
     nav.addEventListener('focusout', closeOnFocusLost);
   } else {
     window.removeEventListener('keydown', closeOnEscape);
@@ -108,12 +100,10 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
-  // load nav as fragment
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
   const fragment = await loadFragment(navPath);
 
-  // decorate nav DOM
   block.textContent = '';
   const nav = document.createElement('nav');
   nav.id = 'nav';
@@ -126,6 +116,29 @@ export default async function decorate(block) {
   });
 
   const navBrand = nav.querySelector('.nav-brand');
+
+  const customDiv = document.createElement('div');
+customDiv.className = 'nav-custom';
+console.log("Adding logo");
+
+const logoLink = document.createElement('a');
+logoLink.href = '/';
+logoLink.setAttribute('aria-label', 'Homepage');
+
+// Create an <img> pointing to the SVG file
+const logoImg = document.createElement('img');
+logoImg.src = '/icons/wknd.svg'; // <-- Replace with actual path
+logoImg.alt = 'Site Logo';
+logoImg.className = 'nav-logo';
+
+logoLink.appendChild(logoImg);
+customDiv.appendChild(logoLink);
+
+// Insert before navBrand
+if (navBrand && navBrand.parentElement) {
+  navBrand.parentElement.insertBefore(customDiv, navBrand);
+}
+
   const brandLink = navBrand.querySelector('.button');
   if (brandLink) {
     brandLink.className = '';
@@ -146,7 +159,6 @@ export default async function decorate(block) {
     });
   }
 
-  // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
   hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
@@ -155,12 +167,42 @@ export default async function decorate(block) {
   hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
   nav.prepend(hamburger);
   nav.setAttribute('aria-expanded', 'false');
-  // prevent mobile nav behavior on window resize
   toggleMenu(nav, navSections, isDesktop.matches);
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
 
+ // ----- CREATE TOP STATIC BAR (added code)-----
+  const topBar = document.createElement('div');
+  topBar.className = 'top-bar';
+
+  const signIn = document.createElement('a');
+  signIn.href = '/signin'; 
+  signIn.textContent = 'SIGN IN';
+  signIn.className = 'top-signin';
+
+  /*const langSelector = document.createElement('div');
+  langSelector.className = 'top-lang-selector';
+
+  const flag = document.createElement('img');
+  flag.src = '/icons/us-flag.png'; // Replace with your flag icon
+  flag.alt = 'US Flag';
+  flag.className = 'top-flag';
+
+  const langText = document.createElement('span');
+  langText.textContent = 'EN-US';
+
+  const caret = document.createElement('span');
+  caret.className = 'top-caret';
+  caret.innerHTML = '&#9662;';
+
+  langSelector.append(flag, langText, caret);
+  */
+  topBar.append(signIn);
+  
+
+  // ---- FINAL WRAP ----
+
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
-  navWrapper.append(nav);
+  navWrapper.append(topBar,nav);
   block.append(navWrapper);
 }
