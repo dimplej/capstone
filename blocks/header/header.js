@@ -117,27 +117,6 @@ export default async function decorate(block) {
 
   const navBrand = nav.querySelector('.nav-brand');
 
-  const customDiv = document.createElement('div');
-customDiv.className = 'nav-custom';
-console.log("Adding logo");
-
-const logoLink = document.createElement('a');
-logoLink.href = '/';
-logoLink.setAttribute('aria-label', 'Homepage');
-
-// Create an <img> pointing to the SVG file
-const logoImg = document.createElement('img');
-logoImg.src = '/icons/wknd.svg'; // <-- Replace with actual path
-logoImg.alt = 'Site Logo';
-logoImg.className = 'nav-logo';
-
-logoLink.appendChild(logoImg);
-customDiv.appendChild(logoLink);
-
-// Insert before navBrand
-if (navBrand && navBrand.parentElement) {
-  navBrand.parentElement.insertBefore(customDiv, navBrand);
-}
 
   const brandLink = navBrand.querySelector('.button');
   if (brandLink) {
@@ -206,3 +185,4 @@ if (navBrand && navBrand.parentElement) {
   navWrapper.append(topBar,nav);
   block.append(navWrapper);
 }
+ 
