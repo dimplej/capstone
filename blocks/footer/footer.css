@@ -1,19 +1,33 @@
 footer {
-  background-color: var(--light-color);
+  background-color: black;
+  color: white;
   font-size: var(--body-font-size-xs);
 }
 
 footer .footer > div {
+  line-height: 1.6;
   margin: auto;
   max-width: 1200px;
   padding: 40px 24px 24px;
 }
 
 footer .footer p {
-  margin: 0;
+  margin: 0 0 1rem 0;
 }
 
-@media (width >= 900px) {
+footer .footer a {
+  color: #ddd;
+  text-decoration: none;
+  border-bottom: 1px dotted #888;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+footer .footer a:hover {
+  color: white;
+  border-color: white;
+}
+
+@media (min-width: 900px) {
   footer .footer > div {
     padding: 40px 32px 24px;
   }
