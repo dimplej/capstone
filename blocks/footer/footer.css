@@ -1,34 +1,91 @@
-footer {
-  background-color: black;
-  color: white;
-  font-size: var(--body-font-size-xs);
-}
-
-footer .footer > div {
-  line-height: 1.6;
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
-}
-
-footer .footer p {
-  margin: 0 0 1rem 0;
-}
-
-footer .footer a {
-  color: #ddd;
-  text-decoration: none;
-  border-bottom: 1px dotted #888;
-  transition: color 0.3s, border-color 0.3s;
-}
-
-footer .footer a:hover {
-  color: white;
-  border-color: white;
-}
-
-@media (min-width: 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+  footer {
+    background-color: black;
+    color: white;
+    font-size: var(--body-font-size-xs);
+    padding-bottom: 120px;
   }
-}
+
+  footer .footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  footer .footer > div {
+    line-height: 1.6;
+    margin: auto;
+    max-width: 1200px;
+    padding: 40px 24px 24px;
+  }
+
+  /* Layout for logo + links in one line */
+  footer .default-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    flex-wrap: wrap;
+    padding: 0 20px;
+    gap: 8rem;
+    margin-top: 1rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: 0;
+  }
+
+  /* WKND Logo */
+  footer .icon.icon-wknd img {
+    width: 128px;
+    height: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+  }
+
+  /* Link list styles */
+  footer .default-content-wrapper ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  footer .default-content-wrapper ul li {
+    display: inline-block;
+  }
+
+  footer .default-content-wrapper ul li a {
+    color: #ddd;
+    text-decoration: none;
+    border-bottom: 1px dotted #888;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  footer .default-content-wrapper ul li a:hover {
+    color: white;
+    border-color: white;
+  }
+
+  /* Footer paragraph styling */
+  footer .footer p {
+    margin: 0 0 1rem 0;
+  }
+
+  /* Link styling */
+  footer .footer a {
+    color: #ddd;
+    text-decoration: none;
+    border-bottom: 1px dotted #888;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  footer .footer a:hover {
+    color: white;
+    border-color: white;
+  }
+
+  @media (min-width: 900px) {
+    footer .footer > div {
+      padding: 40px 32px 24px;
+    }
+  }

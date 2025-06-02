@@ -176,6 +176,8 @@ export default async function decorate(block) {
   langSelector.append(flag, langText, caret);
   */
   topBar.append(signIn);
+
+  //create WKND logo in the footer
   
 
   // ---- FINAL WRAP ----
