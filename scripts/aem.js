@@ -670,6 +670,8 @@ async function loadSections(element) {
   }
 }
 
+
+
 init();
 
 export {
@@ -695,5 +697,5 @@ export {
   toCamelCase,
   toClassName,
   waitForFirstImage,
-  wrapTextNodes,
+  wrapTextNodes
 };

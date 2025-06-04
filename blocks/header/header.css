@@ -4,6 +4,7 @@ header .nav-wrapper {
   width: 100%;
   z-index: 2;
   position: fixed;
+  min-width: 300px;
 }
 
 
@@ -41,7 +42,7 @@ header nav[aria-expanded='true'] {
   }
 
   header nav[aria-expanded='true'] {
-    min-height: 0;
+    min-height: 150px;
     overflow: visible;
   }
 }
