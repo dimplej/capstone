@@ -1,0 +1,6 @@
+{
+  "autopauseDisabled": false,
+  "delay": 5000,
+  "sling:resourceType": "core-components-examples/components/carousel",
+  "autoplay": false
+}
