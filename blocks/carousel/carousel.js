@@ -1,4 +1,4 @@
-import { fetchPlaceholders } from '../../scripts/placeholder.js';
+import { fetchPlaceholders } from '../../scripts/placeholders.js';
 
 function updateActiveSlide(slide) {
   const block = slide.closest('.carousel');
@@ -148,3 +148,4 @@ export default async function decorate(block) {
     bindEvents(block);
   }
 }
+
