@@ -1,11 +1,11 @@
-.articles-list-container .default-content-wrapper p {
+.articles-container .default-content-wrapper p {
     font-size: 0.8rem;
     font-weight: bold;
     padding: 0% 2%;
     margin-top: 0;
 }
 
-.articles-list.no-image .articles-items-list {
+.articles.no-image .articles-items-list {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -13,7 +13,7 @@
     padding-left: 10px;
 }
 
-.articles-list.no-image .articles-items-list .article-item {
+.articles.no-image .articles-items-list .article-item {
     padding: 20px;
     flex: 1;
     list-style: none;
@@ -22,28 +22,28 @@
     font-size: 1.0rem;
 }
 
-.articles-list.no-image .articles-items-list .article-item a {
+.articles.no-image .articles-items-list .article-item a {
     display: flex;
     flex-direction: column;
     color: black;
 }
 
-.articles-list.no-image .articles-items-list .article-item a:hover {
+.articles.no-image .articles-items-list .article-item a:hover {
     background-color: var(--capstone-background-color);
 }
 
-.articles-list.no-image .articles-items-list .article-item .last-modified-date {
+.articles.no-image .articles-items-list .article-item .last-modified-date {
     color: dimgray;
     font-size: 0.7rem;
 }
 
-.articles-list-container .default-content-wrapper h3 {
+.articles-container .default-content-wrapper h3 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: 300;
     margin: 5%;
 }
 
-.articles-list-container .default-content-wrapper h3::after {
+.articles-container .default-content-wrapper h3::after {
   border-bottom: 2px solid var(--capstone-background-color);
   content: '';
   display: block;
@@ -52,12 +52,12 @@
   width: 5pc;
 }
 
-.articles-list-container .articles-list-wrapper .articles-list.with-image ul {
+.articles-container .articles-wrapper .articles.with-image ul {
     list-style: none;
     padding-left: 20px;
 }
 
-.articles-list-container .articles-list-wrapper .articles-list.with-image li {
+.articles-container .articles-wrapper .articles.with-image li {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -66,18 +66,18 @@
     padding-bottom: 20px;
 }
 
-.articles-list-container .articles-list-wrapper .articles-list.with-image li img {
+.articles-container .articles-wrapper .articles.with-image li img {
     width: 260px;
     height: 200px;
 }
 
-.articles-list-container .articles-list-wrapper .articles-list.with-image li a {
+.articles-container .articles-wrapper .articles.with-image li a {
     margin-top: 10px;
     color: black;
     font-weight: bold;
 }
 
-.articles-list-container .articles-list-wrapper .articles-list.with-image li p {
+.articles-container .articles-wrapper .articles.with-image li p {
     overflow: hidden;
     text-overflow: ellipsis;
     width: 260px;
@@ -85,18 +85,18 @@
     white-space: nowrap;
 }
 
-.articles-list-container .articles-list-wrapper .articles-list.with-image.wrap li:nth-of-type(1n+5) {
+.articles-container .articles-wrapper .articles.with-image.wrap li:nth-of-type(1n+5) {
     display: none;
 }
 
-.articles-list-container .button-container a.button {
+.articles-container .button-container a.button {
     background-color: var(--capstone-background-color);
     border-radius: 0%;
     color: black;
     text-transform: uppercase;
 }
 
-.articles-list-container .default-content-wrapper .button-container {
+.articles-container .default-content-wrapper .button-container {
     margin-right: 4%;
     margin-left: 4%;
     padding-bottom: 4rem;
@@ -104,26 +104,26 @@
 }
 
 @media (width >= 900px) {
-    .articles-list-container {
+    .articles-container {
         flex: 0 1 20%;
     }
 
-    .articles-list-container .default-content-wrapper h3 {
+    .articles-container .default-content-wrapper h3 {
         margin: 2%;
     }
 
-    .articles-list-container .articles-list-wrapper .articles-list.with-image ul {
+    .articles-container .articles-wrapper .articles.with-image ul {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
     }
 
-    .articles-list-container .button-container a.button {
+    .articles-container .button-container a.button {
         margin-left: 0;
     }
 
-    .articles-list-container .default-content-wrapper .button-container {
+    .articles-container .default-content-wrapper .button-container {
         margin-left: 0;
     }
 }
