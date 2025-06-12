@@ -1,67 +1,62 @@
 export default async function decorate(block) {
-  const articleLink = block.querySelector('a[href$=".json"]');
-  if (!articleLink) return;
+  const jsonLink = block.querySelector('a[href$=".json"]');
+  if (!jsonLink) return;
 
-  const response = await fetch(new URL(articleLink.href).pathname);
-  const magazineArticles = await response.json();
+  let data;
+  try {
+    const res = await fetch(new URL(jsonLink.href).pathname);
+    data = (await res.json()).data;
+  } catch {
+    console.error('Failed to fetch articles JSON');
+    return;
+  }
+
   const withImage = block.classList.contains('with-image');
   const noImage = block.classList.contains('no-image');
-
-  block.innerHTML = '';
   const list = document.createElement('ul');
-  list.classList.add('articles-items-list');
+  list.className = 'articles-items-list';
 
-  magazineArticles.data
-    .filter(article => article.path?.startsWith('/magazine') && article.title)
+  data
+    .filter(a => a.path?.startsWith('/magazine') && a.title)
     .sort((a, b) => (b.lastModified || 0) - (a.lastModified || 0))
-    .forEach(article => {
-      const item = document.createElement('li');
-      item.classList.add('article-item');
-
+    .forEach(a => {
+      const li = document.createElement('li');
+      li.className = 'article-item';
       const link = document.createElement('a');
-      link.href = article.path;
+      link.href = a.path;
 
       if (withImage) {
         const img = document.createElement('img');
-        img.src = article.image || 'https://via.placeholder.com/260x200?text=No+Image';
-        img.alt = article.title;
-
+        img.src = a.image || 'https://via.placeholder.com/260x200';
+        img.alt = a.title;
         const title = document.createElement('div');
-        title.textContent = article.title;
-
+        title.textContent = a.title;
         const desc = document.createElement('p');
-        desc.classList.add('article-description');
-        desc.textContent = article.description || '';
-
-        link.appendChild(title);
-        item.append(img, link, desc);
-      }
-
-      if (noImage) {
+        desc.className = 'article-description';
+        desc.textContent = a.description || '';
+        link.append(title);
+        li.append(img, link, desc);
+      } else {
         const title = document.createElement('span');
-        title.textContent = article.title;
-
+        title.textContent = a.title;
         const date = document.createElement('span');
-        date.classList.add('last-modified-date');
-        date.textContent = formatDate(article.lastModified);
-
+        date.className = 'last-modified-date';
+        date.textContent = formatDate(a.lastModified);
         link.append(title, date);
-        item.append(link);
+        li.append(link);
       }
 
-      list.appendChild(item);
+      list.append(li);
     });
 
-  block.appendChild(list);
+  block.innerHTML = '';
+  block.append(list);
 }
 
-function formatDate(timestamp) {
-  if (!timestamp) return 'Date Unknown';
-  const date = new Date(timestamp * 1000);
-  return date.toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
+function formatDate(ts) {
+  if (!ts) return 'Date Unknown';
+  const d = new Date(ts * 1000);
+  return d.toLocaleDateString('en-US', {
+    weekday: 'long', month: 'short', day: 'numeric', year: 'numeric'
   });
 }
