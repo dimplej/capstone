@@ -4,8 +4,6 @@ export default async function decorate(block) {
 
   const response = await fetch(new URL(articleLink.href).pathname);
   const magazineArticles = await response.json();
-  console.log("Fetched Data:", magazineArticles);
-
   const withImage = block.classList.contains('with-image');
   const noImage = block.classList.contains('no-image');
 
@@ -26,26 +24,28 @@ export default async function decorate(block) {
       if (withImage) {
         const img = document.createElement('img');
         img.src = article.image || 'https://via.placeholder.com/260x200?text=No+Image';
+        img.alt = article.title;
 
         const title = document.createElement('div');
         title.textContent = article.title;
 
         const desc = document.createElement('p');
         desc.classList.add('article-description');
-        desc.textContent = article.description || 'No description available.';
+        desc.textContent = article.description || '';
 
-        link.appendChild(img);
         link.appendChild(title);
-        item.append(link, desc);
-      } else if (noImage) {
+        item.append(img, link, desc);
+      }
+
+      if (noImage) {
         const title = document.createElement('span');
         title.textContent = article.title;
 
-        const modified = document.createElement('span');
-        modified.classList.add('last-modified-date');
-        modified.textContent = formatDate(article.lastModified);
+        const date = document.createElement('span');
+        date.classList.add('last-modified-date');
+        date.textContent = formatDate(article.lastModified);
 
-        link.append(title, modified);
+        link.append(title, date);
         item.append(link);
       }
 
