@@ -178,8 +178,23 @@ export default async function decorate(block) {
   topBar.append(signIn);
   
 
-  // ---- FINAL WRAP ----
 
+
+
+  // === Add scroll shadow effect ===
+  const header = document.querySelector('header');
+
+  function onScroll() {
+    if (window.scrollY > 0) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', onScroll);
+
+    // ---- FINAL WRAP ----
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(topBar,nav);

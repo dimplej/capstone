@@ -17,8 +17,8 @@ header nav {
   gap: 0 24px;
   margin: auto;
   max-width: 1248px;
-  height: var(--nav-height);
-  padding: 0 24px;
+  height: 128px;
+  padding: 0 14px;
   font-family: var(--body-font-family);
 }
 
@@ -147,6 +147,7 @@ header .nav-brand {
   font-size: var(--heading-font-size-s);
   font-weight: 700;
   line-height: 1;
+  
 }
 
 /* added for logo customisation*/
@@ -157,8 +158,9 @@ header .nav-brand {
 }
 
 .nav-logo {
-  height: 128px;
+  height: 200px;
   width: auto;
+  
 }
 
 /*added for top bar*/
@@ -198,12 +200,15 @@ margin-right: auto;
 .nav-logo {
   height: 40px;
   margin-right: 10px;
+ 
 }
+
 
 
 header nav .nav-brand img {
   width: 128px;
-  height: auto;
+  height: 128px;
+  filter: none;
 }
 
 /* sections */
@@ -319,6 +324,13 @@ header nav .nav-sections ul > li > ul > li {
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
     padding: 8px 0;
   }
+
+  
+header.scrolled .nav-wrapper {
+  border-bottom: 1px solid #ccc; /* or any color/style */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* optional shadow */
+}
+
 }
 
 
@@ -341,3 +353,4 @@ header nav .nav-tools:focus {
   border-color: #007aff;
   box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
 }
+

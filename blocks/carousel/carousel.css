@@ -54,8 +54,8 @@
 .carousel .carousel-slide .carousel-slide-content {
   z-index: 1;
   margin: 68px;
-  padding: 16px;
-  color: black;
+  padding: 20px;
+  color: white;
   background-color: rgb(19 19 19 / 75%);
   position: relative;
   width: var(--slide-content-width, auto);
@@ -66,14 +66,14 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 6px 12px;
-  padding: 12px;
+  padding: 24px;
   background-color: var(--light-color);
   line-height: 0;
 }
 
 .carousel .carousel-slide-indicator button {
-  width: 24px;
-  height: 24px;
+  width: 12px;
+  height: 12px;
   margin: 0;
   padding: 0;
   border-radius: 50%;
@@ -89,13 +89,13 @@
 
 .carousel .carousel-navigation-buttons {
   position: absolute;
-  top: 50%;
+  top: 105%;
   transform: translateY(-50%);
   left: 12px;
   right: 12px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   z-index: 1;
 }
 
