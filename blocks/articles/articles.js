@@ -4,6 +4,7 @@ export default async function decorate(block) {
     const magazineArticles = await response.json();
     const noImageAttr = block.classList.contains('no-image');
     const imageAttr = block.classList.contains('with-image');
+    console.log(magazineArticles);
 
     block.innerHTML = '';
 
