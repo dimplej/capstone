@@ -4,45 +4,51 @@ export default async function decorate(block) {
     const magazineArticles = await response.json();
     const noImageAttr = block.classList.contains('no-image');
     const imageAttr = block.classList.contains('with-image');
-    console.log(magazineArticles);
 
     block.innerHTML = '';
-
     const articlesList = document.createElement('ul');
     articlesList.classList.add('articles-items-list');
 
-    magazineArticles.data.sort((art1, art2) => art2.lastModified - art1.lastModified);
+    // Sort by lastModified (fallback to 0 if empty)
+    magazineArticles.data.sort((a, b) => (b.lastModified || 0) - (a.lastModified || 0));
+
     magazineArticles.data.forEach((article) => {
         if (article.path && article.path.startsWith('/magazine') && !article.path.endsWith('/magazine/')) {
-            const articleItem = document.createElement('li');
-            articleItem.classList.add('article-item');
+            const item = document.createElement('li');
+            item.classList.add('article-item');
 
-            const articleTitle = document.createElement('a');
-            articleTitle.href = article.path;
+            const link = document.createElement('a');
+            link.href = article.path;
 
             if (noImageAttr) {
                 const titleSpan = document.createElement('span');
                 titleSpan.textContent = article.title;
 
-                const lastModified = document.createElement('span');
-                lastModified.classList.add('last-modified-date');
-                lastModified.textContent = formatDate(article.lastModified);
+                const dateSpan = document.createElement('span');
+                dateSpan.classList.add('last-modified-date');
+                dateSpan.textContent = formatDate(article.lastModified);
 
-                articleTitle.append(titleSpan, lastModified);
-                articleItem.append(articleTitle);
+                link.append(titleSpan, dateSpan);
+                item.append(link);
             } else if (imageAttr) {
-                articleTitle.textContent = article.title;
+                if (article.image) {
+                    const img = document.createElement('img');
+                    img.src = article.image;
+                    item.append(img);
+                }
 
-                const thumbnail = document.createElement('img');
-                thumbnail.src = article.image;
+                const title = document.createElement('a');
+                title.href = article.path;
+                title.textContent = article.title;
 
-                const description = document.createElement('p');
-                description.classList.add('article-description');
-                description.textContent = article.description;
+                const desc = document.createElement('p');
+                desc.classList.add('article-description');
+                desc.textContent = article.description;
 
-                articleItem.append(thumbnail, articleTitle, description);
+                item.append(title, desc);
             }
-            articlesList.append(articleItem);
+
+            articlesList.append(item);
         }
     });
 
@@ -50,10 +56,8 @@ export default async function decorate(block) {
 }
 
 function formatDate(lastModified) {
+    if (!lastModified) return 'Date Unknown';
     const date = new Date(lastModified * 1000);
     const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
-    const formattedDate = date.toLocaleDateString('en-US', options);
-    const [weekday, monthDay, year] = formattedDate.split(', ');
-    const [month, day] = monthDay.split(' ');
-    return `${weekday}, ${day} ${month} ${year}`;
+    return date.toLocaleDateString('en-US', options);
 }
