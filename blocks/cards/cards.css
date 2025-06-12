@@ -1,19 +1,22 @@
+
 .cards > ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  grid-gap: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px; /* space between cards */
 }
 
 .cards > ul > li {
+  flex: 0 0 calc(25% - 18px); /* 4 items per row with gap adjustment */
+  box-sizing: border-box;
   border: 1px solid #dadada;
   background-color: var(--background-color);
 }
 
 .cards .cards-card-body {
-  margin: 16px;
+  margin: 8px;
 }
 
 .cards .cards-card-image {
@@ -25,3 +28,58 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+.cards .cards-card-body h2 {
+  font-size: 20px;
+}
+
+
+.cards .cards-card-body p {
+  color: dimgray;
+  font-size: var(--fontSizeSmall, 14px);
+  margin-top: 1rem;
+
+  /* trunkate to half a line with ellipsis */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
+  /* limit to one line (webkit) */
+  -webkit-line-clamp: 1;
+
+  /* standard property (where supported) */
+  line-clamp: 1;
+
+  /* tighten the visible height to about half a line */
+  line-height: 1.2;
+  max-height: 1.6em;
+  text-transform: uppercase;
+}
+
+@media (width >= 900px) {
+  .cards .cards-card-body p {
+  color: dimgray;
+  font-size: var(--fontSizeSmall, 14px);
+  margin-top: 1rem;
+
+  /* trunkate to half a line with ellipsis */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
+  /* limit to one line (webkit) */
+  -webkit-line-clamp: 1;
+
+  /* standard property (where supported) */
+  line-clamp: 1;
+
+  /* tighten the visible height to about half a line */
+  line-height: 1.2;
+  max-height: 1.6em;
+  text-transform: uppercase;
+}
+}
+
+  
