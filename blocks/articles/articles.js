@@ -1,63 +1,67 @@
 export default async function decorate(block) {
-    const articleLink = block.querySelector('a[href$=".json"]');
-    const response = await fetch(new URL(articleLink.href).pathname);
-    const magazineArticles = await response.json();
-    const noImageAttr = block.classList.contains('no-image');
-    const imageAttr = block.classList.contains('with-image');
+  const articleLink = block.querySelector('a[href$=".json"]');
+  if (!articleLink) return;
 
-    block.innerHTML = '';
-    const articlesList = document.createElement('ul');
-    articlesList.classList.add('articles-items-list');
+  const response = await fetch(new URL(articleLink.href).pathname);
+  const magazineArticles = await response.json();
 
-    // Sort by lastModified (fallback to 0 if empty)
-    magazineArticles.data.sort((a, b) => (b.lastModified || 0) - (a.lastModified || 0));
+  const withImage = block.classList.contains('with-image');
+  const noImage = block.classList.contains('no-image');
 
-    magazineArticles.data.forEach((article) => {
-        if (article.path && article.path.startsWith('/magazine') && !article.path.endsWith('/magazine/')) {
-            const item = document.createElement('li');
-            item.classList.add('article-item');
+  block.innerHTML = '';
+  const list = document.createElement('ul');
+  list.classList.add('articles-items-list');
 
-            const link = document.createElement('a');
-            link.href = article.path;
+  magazineArticles.data
+    .filter(a => a.path?.startsWith('/magazine') && a.title) // only /magazine paths
+    .sort((a, b) => (b.lastModified || 0) - (a.lastModified || 0)) // descending sort
+    .forEach(article => {
+      const item = document.createElement('li');
+      item.classList.add('article-item');
 
-            if (noImageAttr) {
-                const titleSpan = document.createElement('span');
-                titleSpan.textContent = article.title;
+      const link = document.createElement('a');
+      link.href = article.path;
 
-                const dateSpan = document.createElement('span');
-                dateSpan.classList.add('last-modified-date');
-                dateSpan.textContent = formatDate(article.lastModified);
-
-                link.append(titleSpan, dateSpan);
-                item.append(link);
-            } else if (imageAttr) {
-                if (article.image) {
-                    const img = document.createElement('img');
-                    img.src = article.image;
-                    item.append(img);
-                }
-
-                const title = document.createElement('a');
-                title.href = article.path;
-                title.textContent = article.title;
-
-                const desc = document.createElement('p');
-                desc.classList.add('article-description');
-                desc.textContent = article.description;
-
-                item.append(title, desc);
-            }
-
-            articlesList.append(item);
+      if (withImage) {
+        if (article.image) {
+          const img = document.createElement('img');
+          img.src = article.image;
+          link.appendChild(img);
         }
+
+        const title = document.createElement('div');
+        title.textContent = article.title;
+        link.appendChild(title);
+
+        const desc = document.createElement('p');
+        desc.classList.add('article-description');
+        desc.textContent = article.description || '';
+        item.append(link, desc);
+      } else if (noImage) {
+        const title = document.createElement('span');
+        title.textContent = article.title;
+
+        const modified = document.createElement('span');
+        modified.classList.add('last-modified-date');
+        modified.textContent = formatDate(article.lastModified);
+
+        link.append(title, modified);
+        item.append(link);
+      }
+
+      list.appendChild(item);
     });
 
-    block.append(articlesList);
+  block.appendChild(list);
 }
 
-function formatDate(lastModified) {
-    if (!lastModified) return 'Date Unknown';
-    const date = new Date(lastModified * 1000);
-    const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
+function formatDate(timestamp) {
+  if (!timestamp) return '';
+  const date = new Date(timestamp * 1000);
+  return date.toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
 }
