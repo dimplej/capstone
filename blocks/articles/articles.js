@@ -1,38 +1,58 @@
 export default async function decorate(block) {
-  const container = document.createElement("div");
-  container.classList.add("articles");
+    const articleLink = block.querySelector('a[href$=".json"]');
+    const response = await fetch(new URL(articleLink.href).pathname);
+    const magazineArticles = await response.json();
+    const noImageAttr = block.classList.contains('no-image');
+    const imageAttr = block.classList.contains('with-image');
 
-  // Manually hardcoded JSON source (change this to your live URL)
-  const jsonUrl = 'https://main--capstone--dimplej.aem.live/query-index.json';
+    block.innerHTML = '';
 
-  try {
-    const response = await fetch(jsonUrl);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const json = await response.json();
+    const articlesList = document.createElement('ul');
+    articlesList.classList.add('articles-items-list');
 
-    if (Array.isArray(json.data)) {
-      json.data.forEach((item) => {
-        const article = document.createElement("div");
-        article.classList.add("article");
+    magazineArticles.data.sort((art1, art2) => art2.lastModified - art1.lastModified);
+    magazineArticles.data.forEach((article) => {
+        if (article.path && article.path.startsWith('/magazine') && !article.path.endsWith('/magazine/')) {
+            const articleItem = document.createElement('li');
+            articleItem.classList.add('article-item');
 
-        article.innerHTML = `
-          <h3>${item.Title || 'Untitled'}</h3>
-          ${item.Image ? `<img src="${item.Image}" alt="${item.Title}" />` : ''}
-          <p>${item.Description || ''}</p>
-        `;
+            const articleTitle = document.createElement('a');
+            articleTitle.href = article.path;
 
-        container.appendChild(article);
-      });
-    } else {
-      container.textContent = "No valid article data found.";
-    }
+            if (noImageAttr) {
+                const titleSpan = document.createElement('span');
+                titleSpan.textContent = article.title;
 
-  } catch (err) {
-    console.error("Failed to load JSON:", err);
-    container.textContent = "Could not load articles.";
-  }
+                const lastModified = document.createElement('span');
+                lastModified.classList.add('last-modified-date');
+                lastModified.textContent = formatDate(article.lastModified);
 
-  // Replace the block content
-  block.innerHTML = '';
-  block.appendChild(container);
+                articleTitle.append(titleSpan, lastModified);
+                articleItem.append(articleTitle);
+            } else if (imageAttr) {
+                articleTitle.textContent = article.title;
+
+                const thumbnail = document.createElement('img');
+                thumbnail.src = article.image;
+
+                const description = document.createElement('p');
+                description.classList.add('article-description');
+                description.textContent = article.description;
+
+                articleItem.append(thumbnail, articleTitle, description);
+            }
+            articlesList.append(articleItem);
+        }
+    });
+
+    block.append(articlesList);
+}
+
+function formatDate(lastModified) {
+    const date = new Date(lastModified * 1000);
+    const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+    const formattedDate = date.toLocaleDateString('en-US', options);
+    const [weekday, monthDay, year] = formattedDate.split(', ');
+    const [month, day] = monthDay.split(' ');
+    return `${weekday}, ${day} ${month} ${year}`;
 }
