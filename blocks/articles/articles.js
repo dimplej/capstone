@@ -6,57 +6,73 @@ export default async function decorate(block) {
   try {
     const res = await fetch(new URL(jsonLink.href).pathname);
     data = (await res.json()).data;
+    console.log(data);
   } catch {
     console.error('Failed to fetch articles JSON');
     return;
   }
 
-  const withImage = block.classList.contains('with-image');
-  const noImage = block.classList.contains('no-image');
-  const list = document.createElement('ul');
-  list.className = 'articles-items-list';
+  // Filter and sort: only /magazine items with images, sorted by lastModified
+  const filteredData = data
+    .filter((item) =>
+      item.path?.startsWith('/magazine') &&
+      item.image &&
+      item.image.trim() !== ''
+    )
+    .sort((a, b) => (b.lastModified || 0) - (a.lastModified || 0));
 
-  data
-    .filter(a => a.path?.startsWith('/magazine') && a.title)
-    .sort((a, b) => (b.lastModified || 0) - (a.lastModified || 0))
-    .forEach(a => {
-      const li = document.createElement('li');
-      li.className = 'article-item';
-      const link = document.createElement('a');
-      link.href = a.path;
+  const ul = document.createElement('ul');
 
-      if (withImage) {
-        const img = document.createElement('img');
-        img.src = a.image || 'https://via.placeholder.com/260x200';
-        img.alt = a.title;
-        const title = document.createElement('div');
-        title.textContent = a.title;
-        const desc = document.createElement('p');
-        desc.className = 'article-description';
-        desc.textContent = a.description || '';
-        link.append(title);
-        li.append(img, link, desc);
-      } else {
-        const title = document.createElement('span');
-        title.textContent = a.title;
-        const date = document.createElement('span');
-        date.className = 'last-modified-date';
-        date.textContent = formatDate(a.lastModified);
-        link.append(title, date);
-        li.append(link);
-      }
+  filteredData.forEach((item) => {
+    const li = document.createElement('li');
 
-      list.append(li);
-    });
+    // Image
+    const imageWrapper = document.createElement('div');
+    imageWrapper.className = 'articles-card-image';
+    const img = document.createElement('img');
+    img.src = item.image;
+    img.alt = item.title;
+    imageWrapper.appendChild(img);
+
+    // Body
+    const body = document.createElement('div');
+    body.className = 'articles-card-body';
+
+    const title = document.createElement('h2');
+    const titleLink = document.createElement('a');
+    titleLink.href = item.path;
+    titleLink.textContent = item.title;
+    title.appendChild(titleLink);
+
+    const desc = document.createElement('p');
+    desc.textContent = item.description;
+
+    const date = document.createElement('p');
+    date.className = 'articles-card-date';
+    if(item.lastModified){
+      date.textContent = `Last updated: ${formatDate(item.lastModified)}`;
+    }
+    
+    body.appendChild(title);
+    body.appendChild(desc);
+    body.appendChild(date);
+
+    li.appendChild(imageWrapper);
+    li.appendChild(body);
+    ul.appendChild(li);
+  });
 
   block.innerHTML = '';
-  block.append(list);
+  block.append(ul);
 }
 
 function formatDate(ts) {
   if (!ts) return 'Date Unknown';
-  const d = new Date(ts * 1000);
+  const d = new Date(ts * 1000); // assuming timestamp is in seconds
   return d.toLocaleDateString('en-US', {
-    weekday: 'long', month: 'short', day: 'numeric', year: 'numeric'
+    weekday: 'long',
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
   });
 }
