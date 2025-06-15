@@ -55,6 +55,15 @@ header nav a:any-link {
   color: currentcolor;
 }
 
+header nav .nav-sections .default-content-wrapper>ul>li:hover {
+    background-color: yellow;
+}
+
+header nav .nav-sections .default-content-wrapper>ul>li>a:hover {
+background-color:yellow;
+text-decoration: none;
+}
+
 /* hamburger */
 header nav .nav-hamburger {
   grid-area: hamburger;
@@ -128,6 +137,10 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
   bottom: 3px;
   transform: rotate(-45deg);
 }
+
+
+
+
 
 @media (width >= 900px) {
   header nav .nav-hamburger {
@@ -291,6 +304,7 @@ header nav .nav-sections ul > li > ul > li {
   header nav .nav-sections .default-content-wrapper > ul > li {
     flex: 0 1 auto;
     position: relative;
+    padding:15px;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul {
@@ -336,7 +350,7 @@ header.scrolled .nav-wrapper {
 
 /* tools */
 header nav .nav-tools {
-   width: 100%;
+  width: 100%;
   max-width: 130px;
   padding: 0.75rem 1rem;
   font-size: 1rem;
