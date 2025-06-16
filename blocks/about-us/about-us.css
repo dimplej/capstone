@@ -78,6 +78,16 @@
   margin: 0;
 }
 
+.about-us.block > div div:last-of-type {
+   display: flex;
+    background-color: black;
+    margin: 10px;
+    gap: 24px;
+    width: 120px; /* Increases width to take full available space */
+    min-height: 30px; /* Increases height; adjust as needed */
+    padding: 10px;
+}
+
 /* === Reset for header/footer specific .default-content-wrapper === */
 header .default-content-wrapper,
 header .default-content-wrapper *,
