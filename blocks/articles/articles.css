@@ -1,40 +1,40 @@
 
-.cards > ul {
+.articles > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 24px; /* space between cards */
+  gap: 24px; /* space between articles */
 }
 
-.cards > ul > li {
+.articles > ul > li {
   flex: 0 0 calc(25% - 18px); /* 4 items per row with gap adjustment */
   box-sizing: border-box;
   border: 1px solid #dadada;
   background-color: var(--background-color);
 }
 
-.cards .cards-card-body {
+.articles .articles-card-body {
   margin: 8px;
 }
 
-.cards .cards-card-image {
+.articles .articles-card-image {
   line-height: 0;
 }
 
-.cards > ul > li img {
+.articles > ul > li img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
 
-.cards .cards-card-body h2 {
+.articles .articles-card-body h2 {
   font-size: 20px;
 }
 
 
-.cards .cards-card-body p {
+.articles .articles-card-body p {
   color: dimgray;
   font-size: var(--fontSizeSmall, 14px);
   margin-top: 1rem;
@@ -58,7 +58,7 @@
 }
 
 @media (width >= 900px) {
-  .cards .cards-card-body p {
+  .articles .articles-card-body p {
   color: dimgray;
   font-size: var(--fontSizeSmall, 14px);
   margin-top: 1rem;

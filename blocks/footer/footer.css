@@ -1,20 +1,198 @@
-footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+/* Footer Wrapper */
+.footer-wrapper {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  font-size: 14px;
+  padding: 20px 24px;
+  font-family: Arial, sans-serif;
 }
 
-footer .footer > div {
-  margin: auto;
+/* Footer block layout */
+.footer.block {
   max-width: 1200px;
-  padding: 40px 24px 24px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
 }
 
-footer .footer p {
+/* Each section inside the footer */
+.footer .section {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Logo, links, and social container */
+.footer .section:first-child .default-content-wrapper {
+  display: flex;
+  justify-content: flex-start; /* Changed to flex-start to control spacing manually */
+  align-items: center; /* Center-align items vertically */
+  flex-wrap: wrap;
+  gap: 4px; /* Further reduced gap */
+}
+
+/* Logo and nav arranged side by side */
+.footer .section:first-child .default-content-wrapper p,
+.footer .section:first-child .default-content-wrapper ul {
   margin: 0;
+  padding: 0;
 }
 
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+.footer .section:first-child .default-content-wrapper p {
+  display: flex;
+  align-items: center;
+}
+
+/* Navigation links */
+.footer .section:first-child .default-content-wrapper ul {
+  display: flex;
+  flex-direction: row; /* Display links horizontally */
+  gap: 24px; /* Space between links */
+  list-style: none; /* Remove bullet points */
+  align-items: center;
+  margin-left: 20px; /* Add specific spacing between logo and links */
+  margin-right: auto; /* Push social links to the right */
+}
+
+/* Footer links */
+.footer .section:first-child .default-content-wrapper ul li {
+  white-space: nowrap;
+}
+
+.footer .section:first-child .default-content-wrapper ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.footer .section:first-child .default-content-wrapper ul li a:hover {
+  color: #cccccc;
+  text-decoration: underline;
+}
+
+.footer .icon-wknd img {
+  width: 128px !important;   /* Adjusted width to match logo size */
+  height: auto !important;   /* Maintain aspect ratio */
+  filter: brightness(0) invert(1);
+  display: block;            /* Removes unwanted spacing below */
+}
+
+/* Prevent logo container from shrinking in flex layout */
+.footer .icon-wknd {
+  flex-shrink: 0;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  padding: 0; /* Removed padding to reduce spacing */
+}
+
+/* Social Links Section */
+.footer .section:first-child .default-content-wrapper p:last-child {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Gap between "Follow us" text and the icon box, matching screenshot */
+  background: none; /* No background for the container */
+  padding: 0; /* No padding for the container */
+  border-radius: 0; /* No rounded edges for the container */
+  border: none; /* Ensure no border on the container */
+}
+
+/* Add "Follow us" text before social icons using pseudo-element */
+.footer .section:first-child .default-content-wrapper p:last-child::before {
+  content: "Follow us"; /* Matches screenshot capitalization */
+  color: #ffffff; /* White text to match the rest of the footer */
+  font-weight: 500; /* Match the weight of the navigation links */
+  font-size: 16px; /* Match the font size of the navigation links */
+  margin-right: 0; /* No extra margin, controlled by gap */
+  border: none; /* Ensure no border */
+  padding: 0; /* Ensure no padding */
+  background: none; /* Ensure no background */
+}
+
+/* Remove <br> effect and ensure icons are inline */
+.footer .section:first-child .default-content-wrapper p:last-child br {
+  display: none; /* Ignore <br> tags */
+}
+
+/* Style the social icons container */
+.footer .section:first-child .default-content-wrapper p:last-child span {
+  display: inline-block;
+  border: none; /* No individual borders on each span */
+  padding: 0; /* No padding on individual spans */
+}
+
+/* Group all icons in a single white box */
+.footer .section:first-child .default-content-wrapper p:last-child > span {
+  display: inline-flex; /* Flex to align icons horizontally */
+  gap: 10px; /* Space between icons inside the box, matching screenshot */
+  background-color: grey; /* White background for the icon box */
+  border-radius: 6px; /* Rounded edges for the box, matching screenshot */
+  padding: 6px 12px; /* Padding inside the box, matching screenshot */
+}
+
+/* Style the social icons */
+.footer .section:first-child .default-content-wrapper p:last-child img {
+  width: 20px; /* Adjusted size to match the screenshot */
+  height: 20px;
+  filter: none; /* No filter since icons are on a white background */
+  transition: opacity 0.3s ease; /* Hover transition */
+}
+
+/* Hover effect for social icons */
+.footer .section:first-child .default-content-wrapper p:last-child span:hover img {
+  opacity: 0.7; /* Hover effect */
+}
+
+/* Copyright and description section */
+.footer .section:nth-child(2) .default-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 32px; /* Add spacing between logo and paragraphs */
+  margin-left: 0; /* Align with logo */
+}
+
+/* Update copyright year dynamically */
+.footer .section:nth-child(2) .default-content-wrapper p:first-child {
+  position: relative;
+}
+
+.footer .section:nth-child(2) .default-content-wrapper p:first-child::before {
+  content: "Ⓒ 2025, WKND Site."; /* Updated year to 2025 */
+  color: #f0f0f0;
+  font-size: 12px;
+}
+
+.footer .section:nth-child(2) .default-content-wrapper p:first-child {
+  color: transparent; /* Hide the original "2019" text */
+}
+
+.footer .section:nth-child(2) .default-content-wrapper p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.footer a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #cccccc;
+}
+
+/* Responsive layout */
+@media (min-width: 900px) {
+  .footer.block {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer .section:first-child .default-content-wrapper {
+    flex-wrap: nowrap;
   }
 }
