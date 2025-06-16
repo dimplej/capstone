@@ -85,7 +85,7 @@
     gap: 24px;
     width: 120px; /* Increases width to take full available space */
     min-height: 30px; /* Increases height; adjust as needed */
-    padding: 10px;
+    padding: 11px;
 }
 
 /* === Reset for header/footer specific .default-content-wrapper === */
