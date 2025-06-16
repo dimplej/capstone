@@ -6,7 +6,6 @@ header .nav-wrapper {
   position: fixed;
 }
 
-
 header nav {
   box-sizing: border-box;
   display: grid;
@@ -60,8 +59,8 @@ header nav .nav-sections .default-content-wrapper>ul>li:hover {
 }
 
 header nav .nav-sections .default-content-wrapper>ul>li>a:hover {
-background-color:yellow;
-text-decoration: none;
+  background-color: yellow;
+  text-decoration: none;
 }
 
 /* hamburger */
@@ -138,10 +137,6 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
   transform: rotate(-45deg);
 }
 
-
-
-
-
 @media (width >= 900px) {
   header nav .nav-hamburger {
     display: none;
@@ -150,20 +145,16 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
 }
 
 /* brand */
-
-
 header .nav-brand {
-  color:green;
-
+  color: green;
   grid-area: brand;
   flex-basis: 128px;
   font-size: var(--heading-font-size-s);
   font-weight: 700;
   line-height: 1;
-  
 }
 
-/* added for logo customisation*/
+/* added for logo customisation */
 .nav-custom {
   display: flex;
   align-items: center;
@@ -173,21 +164,20 @@ header .nav-brand {
 .nav-logo {
   height: 200px;
   width: auto;
-  
 }
 
-/*added for top bar*/
+/* added for top bar */
 .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #1a1a1a;
-  padding: 0.5rem 1rem;
   font-size: 0.9rem;
+  position: relative;
 }
 
-.top-signin {
-margin-right: auto;
+.top-bar-container p {
+  margin-right: auto;
   color: white !important;
   text-decoration: none;
   font-weight: 500;
@@ -213,10 +203,7 @@ margin-right: auto;
 .nav-logo {
   height: 40px;
   margin-right: 10px;
- 
 }
-
-
 
 header nav .nav-brand img {
   width: 128px;
@@ -233,7 +220,6 @@ header nav .nav-sections {
 }
 
 header nav[aria-expanded='true'] .nav-sections {
-  
   display: block;
   visibility: visible;
   align-self: start;
@@ -300,11 +286,10 @@ header nav .nav-sections ul > li > ul > li {
     margin: 0;
   }
 
-  
   header nav .nav-sections .default-content-wrapper > ul > li {
     flex: 0 1 auto;
     position: relative;
-    padding:15px;
+    padding: 15px;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul {
@@ -339,14 +324,11 @@ header nav .nav-sections ul > li > ul > li {
     padding: 8px 0;
   }
 
-  
-header.scrolled .nav-wrapper {
-  border-bottom: 1px solid #ccc; /* or any color/style */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* optional shadow */
+  header.scrolled .nav-wrapper {
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
 }
-
-}
-
 
 /* tools */
 header nav .nav-tools {
@@ -360,7 +342,6 @@ header nav .nav-tools {
   transition: border-color 0.3s, box-shadow 0.3s;
   box-sizing: border-box;
   grid-area: tools;
-  
 }
 
 header nav .nav-tools:focus {
@@ -368,3 +349,77 @@ header nav .nav-tools:focus {
   box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
 }
 
+/* Style the sign-in link */
+.top-signin {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px;
+}
+
+/* Style the form container as a centered pop-up modal */
+header .nav-wrapper .form-container {
+  display: none; /* Initially hidden */
+  position: fixed;
+  top: 50px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+header .nav-wrapper .form-container .form-wrapper {
+  background-color: #ffffff;
+  padding: 20px;
+ 
+  width: 100%;
+  max-width: 400px;
+}
+
+header .nav-wrapper .form-container .form.block {
+  display: flex;
+  flex-direction: column;
+}
+
+header .nav-wrapper .form-container .field-wrapper.text-wrapper {
+  margin-bottom: 10px;
+}
+
+header .nav-wrapper .form-container label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #000000;
+}
+
+header .nav-wrapper .form-container input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 14px;
+}
+
+header .nav-wrapper .form-container input[type="text"]::placeholder {
+  color: #888888;
+}
+
+header .nav-wrapper .form-container .submit-wrapper button {
+  display: block;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 10px;
+  text-transform: uppercase;
+}

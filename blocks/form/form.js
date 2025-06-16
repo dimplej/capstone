@@ -1,12 +1,11 @@
 import createField from './form-fields.js';
 
-async function createForm(formHref, submitHref) {
+async function createForm(formHref) {
   const { pathname } = new URL(formHref);
   const resp = await fetch(pathname);
   const json = await resp.json();
 
   const form = document.createElement('form');
-  form.dataset.action = submitHref;
 
   const fields = await Promise.all(json.data.map((fd) => createField(fd, form)));
   fields.forEach((field) => {
@@ -80,10 +79,8 @@ async function handleSubmit(form) {
 export default async function decorate(block) {
   const links = [...block.querySelectorAll('a')].map((a) => a.href);
   const formLink = links.find((link) => link.startsWith(window.location.origin) && link.endsWith('.json'));
-  const submitLink = links.find((link) => link !== formLink);
-  if (!formLink || !submitLink) return;
 
-  const form = await createForm(formLink, submitLink);
+  const form = await createForm(formLink);
   block.replaceChildren(form);
 
   form.addEventListener('submit', (e) => {
