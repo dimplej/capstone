@@ -1,0 +1,47 @@
+.magazine-author > div {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.magazine-author picture img {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    padding: 25px;
+    object-fit: cover;
+}
+
+.magazine-author div:nth-child(2) {
+    text-align: justify;
+}
+
+.magazine-author div:nth-child(2) > p:first-child {
+    font-size: 1.5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.magazine-author div:nth-child(2) > p:last-child {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: gray;
+}
+
+.magazine-author > div div:last-of-type {
+    display: flex;
+    background-color: black;
+    margin: 10px;
+    gap: 24px;
+}
+
+@media (width >= 900px) {
+    .magazine-author > div {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+
+    .magazine-author > div div:last-of-type {
+        justify-content: space-evenly;
+        margin: 0;
+        height: 50%;
+    }
+}

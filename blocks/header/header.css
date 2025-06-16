@@ -361,7 +361,8 @@ header nav .nav-tools:focus {
 header .nav-wrapper .form-container {
   display: none; /* Initially hidden */
   position: fixed;
-  top: 50px;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
@@ -373,7 +374,7 @@ header .nav-wrapper .form-container {
 header .nav-wrapper .form-container .form-wrapper {
   background-color: #ffffff;
   padding: 20px;
- 
+  border-radius: 10px;
   width: 100%;
   max-width: 400px;
 }
@@ -383,32 +384,32 @@ header .nav-wrapper .form-container .form.block {
   flex-direction: column;
 }
 
-header .nav-wrapper .form-container .field-wrapper.text-wrapper {
-  margin-bottom: 10px;
+header .nav-wrapper .form-container .form.block .field-wrapper.text-wrapper {
+  margin: 0 0 2px 0 !important; /* Reduced spacing between field wrappers, override any defaults */
 }
 
-header .nav-wrapper .form-container label {
+header .nav-wrapper .form-container .form.block .field-wrapper.text-wrapper label {
   display: block;
   font-size: 14px;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin: 0 0 2px 0 !important; /* Reduced spacing between label and input */
   color: #000000;
 }
 
-header .nav-wrapper .form-container input[type="text"] {
+header .nav-wrapper .form-container .form.block .field-wrapper.text-wrapper input[type="text"] {
   width: 100%;
-  padding: 10px;
+  padding: 5px; /* Reduced padding to minimize vertical space */
   border: 2px solid #ccc;
   border-radius: 5px;
   background-color: #ffffff;
   color: #000000;
   font-size: 14px;
+  margin: 0; /* Ensure no additional margins */
 }
 
 header .nav-wrapper .form-container input[type="text"]::placeholder {
   color: #888888;
 }
-
 header .nav-wrapper .form-container .submit-wrapper button {
   display: block;
   background-color: #000000;
@@ -423,3 +424,7 @@ header .nav-wrapper .form-container .submit-wrapper button {
   margin-top: 10px;
   text-transform: uppercase;
 }
+
+
+
+
