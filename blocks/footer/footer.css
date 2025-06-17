@@ -87,6 +87,7 @@
   display: flex;
   align-items: center;
   padding: 0; /* Removed padding to reduce spacing */
+  background-color: transparent !important
 }
 
 /* Social Links Section */
@@ -117,21 +118,27 @@
   display: none; /* Ignore <br> tags */
 }
 
-/* Style the social icons container */
-.footer .section:first-child .default-content-wrapper p:last-child span {
-  display: inline-block;
-  border: none; /* No individual borders on each span */
-  padding: 0; /* No padding on individual spans */
+
+
+.footer .section:first-child .default-content-wrapper p:last-child {
+  display: flex; /* Aligns "Follow us" text and the icon container horizontally */
+  align-items: center; /* Vertically centers the text and icon box */
+  gap: 10px; /* Space between "Follow us" text and the icon box */
 }
 
-/* Group all icons in a single white box */
 .footer .section:first-child .default-content-wrapper p:last-child > span {
-  display: inline-flex; /* Flex to align icons horizontally */
-  gap: 10px; /* Space between icons inside the box, matching screenshot */
-  background-color: grey; /* White background for the icon box */
-  border-radius: 6px; /* Rounded edges for the box, matching screenshot */
-  padding: 6px 12px; /* Padding inside the box, matching screenshot */
+  display: flex; /* Aligns icons horizontally inside the box */
+  gap: 8px; /* Space between icons */
+  background-color: #808080; /* Grey background for the box */
+  border-radius: 6px; /* Rounded corners */
+  padding: 11px; /* Internal spacing inside the box */
+  margin: 10px 0; /* External spacing, adjusted to avoid excessive side margins */
+  width: fit-content; /* Adjusts width to fit the icons */
+  justify-content: center; /* Centers icons horizontally */
+  align-items: center; /* Centers icons vertically */
 }
+
+
 
 /* Style the social icons */
 .footer .section:first-child .default-content-wrapper p:last-child img {
@@ -185,6 +192,18 @@
   color: #cccccc;
 }
 
+.footer .button-container > a.button {
+  all: unset;
+  display: inline-block;
+}
+
+.footer .button-container .icon-wknd img {
+  width: 128px;
+  height: auto;
+  filter: brightness(0) invert(1);
+  display: block;
+}
+
 /* Responsive layout */
 @media (min-width: 900px) {
   .footer.block {
@@ -195,4 +214,16 @@
   .footer .section:first-child .default-content-wrapper {
     flex-wrap: nowrap;
   }
+
+ .footer .button-container > a.button {
+  all: unset;
+  display: inline-block;
+}
+
+.footer .button-container .icon-wknd img {
+  width: 128px;
+  height: auto;
+  filter: brightness(0) invert(1);
+  display: block;
+}
 }
