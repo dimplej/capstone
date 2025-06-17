@@ -12,6 +12,7 @@ export default async function decorate(block) {
     return;
   }
 
+
   // Filter and sort: only /magazine items with images, sorted by lastModified
   const filteredData = data
     .filter((item) =>
@@ -21,9 +22,17 @@ export default async function decorate(block) {
     )
     .sort((a, b) => (b.lastModified || 0) - (a.lastModified || 0));
 
+  const path = window.location.pathname;
+  const isIndexPage = path === '/' || path.endsWith('/index') || path.endsWith('/index.html');
+  console.log(path);
+  console.log("is index page : " + isIndexPage);
+  // Slice only first 4 if on index page
+  const articlesToRender = isIndexPage ? filteredData.slice(0, 4) : filteredData;
+  console.log("articles: " + JSON.stringify(filteredData, null, 2));
+
   const ul = document.createElement('ul');
 
-  filteredData.forEach((item) => {
+  articlesToRender.forEach((item) => {
     const li = document.createElement('li');
 
     // Image
@@ -49,10 +58,10 @@ export default async function decorate(block) {
 
     const date = document.createElement('p');
     date.className = 'articles-card-date';
-    if(item.lastModified){
+    if (item.lastModified) {
       date.textContent = `Last updated: ${formatDate(item.lastModified)}`;
     }
-    
+
     body.appendChild(title);
     body.appendChild(desc);
     body.appendChild(date);

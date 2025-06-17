@@ -60,7 +60,7 @@
 @media (width >= 900px) {
   .articles .articles-card-body p {
   color: dimgray;
-  font-size: var(--fontSizeSmall, 14px);
+  font-size: 12px;
   margin-top: 1rem;
 
   /* trunkate to half a line with ellipsis */
