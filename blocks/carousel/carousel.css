@@ -82,10 +82,10 @@
 
 /* Button style */
 .carousel .carousel-slide .carousel-slide-content a.button {
-  background-color: #ffeb3b; /* Yellow button to match WKND */
+ background-color: #ffeb3b; /* Yellow button to match WKND */
   color: black;
   padding: 10px 20px;
-  border-radius: 4px;
+  border-radius: 2px;
   text-decoration: none;
   font-weight: 600;
   font-size: 16px;
@@ -93,6 +93,7 @@
   letter-spacing: 0.5px;
   transition: background-color 0.2s;
   display: inline-block;
+  font-weight: bold;
 }
 
 .carousel .carousel-slide .carousel-slide-content a.button:hover,

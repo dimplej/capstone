@@ -204,6 +204,76 @@
   display: block;
 }
 
+@media (max-width: 480px) {
+  .footer.block {
+    padding: 0;
+    gap: 24px;
+  }
+
+  /* Arrange logo and nav links in a row */
+  .footer .section:first-child .default-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 20px;
+      flex-wrap: wrap;
+  }
+
+    /* Logo stays fixed width */
+  .footer .icon-wknd {
+    flex-shrink: 0;
+    width: 80px; /* or auto, if needed */
+  }
+
+   /* Nav links align vertically but sit next to logo */
+  .footer .section:first-child .default-content-wrapper ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: flex-start;
+  }
+
+ /* Ensure "Follow us" goes full width below */
+  .footer .section:first-child .default-content-wrapper p:last-child {
+    flex-basis: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    justify-content: flex-start;
+  }
+
+   .footer .section:first-child .default-content-wrapper p:last-child span {
+    margin: 0;
+  }
+
+  /* Social icons container on new line */
+.footer .section:first-child .default-content-wrapper p:last-child .button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;     /* Align icons to the left */
+  align-items: center;
+  gap: 24px;
+  background: #eee;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+  /* Bottom copyright block */
+  .footer .section:nth-child(2) .default-content-wrapper {
+    margin-top: 24px;
+    align-items: flex-start;
+  }
+}
+
+
 /* Responsive layout */
 @media (min-width: 900px) {
   .footer.block {
