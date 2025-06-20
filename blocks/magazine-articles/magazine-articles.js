@@ -71,7 +71,7 @@ function formatDate(ts) {
 
   // Add comma after the day (2nd part)
   if (parts.length >= 4) {
-    parts[0] = parts[0]+',z';
+    parts[0] = parts[0]+',';
   }
 
   console.log(parts);
