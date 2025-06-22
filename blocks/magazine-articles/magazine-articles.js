@@ -50,8 +50,10 @@ const articlesToRender = filteredData.slice(0, 4);
     li.appendChild(body);
     ul.appendChild(li);
   });
+ const buttonContainer = block.querySelector('.button-container');
+  if (buttonContainer) buttonContainer.remove();
+  block.appendChild(ul);
 
-  block.innerHTML = '';
   block.append(ul)
 }
 

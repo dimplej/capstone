@@ -70,7 +70,7 @@ export default async function decorate(block) {
     li.appendChild(body);
     ul.appendChild(li);
   });
-
+console.log("block is : "+block.innerHTML);
   block.innerHTML = '';
   block.append(ul);
 }

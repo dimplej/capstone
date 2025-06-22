@@ -1,5 +1,31 @@
 /* === About Us Section === */
 
+main {
+  padding-top: 90px;
+}
+
+.section {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.section + .section {
+  margin-top: 8px !important; /* small gap between consecutive sections */
+}
+
+.default-content-wrapper {
+  margin-bottom: 8px !important;
+}
+
+.default-content-wrapper h1 {
+  font-size: var(--heading-font-size-xxl);
+  font-family: var(--body-font-family, sans-serif);
+  color: #000;
+  white-space: nowrap;
+  overflow-x: auto;
+ font-weight:normal;
+   margin-bottom: 10px;
+}
 .about-us.block {
   display: flex;
   flex-wrap: wrap;
@@ -7,7 +33,7 @@
   gap: 32px;
   max-width: 1200px;
   margin: auto;
-  padding: 40px 20px;
+    padding: 16px 20px 40px; 
 }
 
 .about-us.block > div {
@@ -34,8 +60,9 @@
 }
 
 .about-us.block h3 {
-  font-size: 1.1rem;
+  font-size:var(--heading-font-size-l);;
   margin: 0 0 4px;
+  font-weight: normal !important;
 }
 
 .about-us.block p {
@@ -48,7 +75,7 @@
 
 .default-content-wrapper {
   max-width: 800px;
-  margin: 0 auto 40px;
+  margin: 0 auto 10px;
   padding: 0 20px;
   text-align: left;
 }
@@ -110,3 +137,11 @@ footer .default-content-wrapper h3 {
     flex: 0 0 100%;
   }
 }
+
+@media (max-width: 480px) {
+  .about-us.block > div {
+    align-items: center;
+    text-align: justify;
+  }
+}
+

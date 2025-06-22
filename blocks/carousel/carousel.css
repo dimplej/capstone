@@ -176,7 +176,7 @@
   left: calc(50% - 2px);
 }
 
-@media (width >= 600px) {
+@media (width : 600px) {
   .carousel .carousel-slide .carousel-slide-content {
     margin: 30px 40px 0; /* Larger margins on bigger screens */
   }
@@ -193,3 +193,14 @@
     margin: 10px 40px; /* Adjust margin for larger screens */
   }
 }
+
+  @media (max-width: 480px) {
+ .carousel .carousel-slide .carousel-slide-image picture > img {
+    width: 100%;                  /* Stretch to container width */
+    height: auto;                 /* Maintain natural height */
+    aspect-ratio: 4/3;         /* Consistent aspect ratio */
+    object-fit: cover;            /* Crop instead of stretching */
+    display: block;               /* Avoid inline spacing */
+    margin: 0;                    /* Remove default spacing */
+  }
+  }
