@@ -327,10 +327,6 @@ justify-content: flex-start;
     align-self: flex-start;
   }
 
-  .magazine-image-wrapper {
-    padding-top: 180px !important;
-  }
-
   .quote-wrapper .quote.block {
     max-width:100%
   }
