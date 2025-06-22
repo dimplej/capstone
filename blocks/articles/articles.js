@@ -25,7 +25,7 @@ const filteredData = data
   const isIndexPage = path === '/' || path.endsWith('/index') || path.endsWith('/index.html');
   // Slice only first 4 if on index page
   const articlesToRender = isIndexPage ? filteredData.slice(0, 4) : filteredData;
-console.log("From articles block");
+
   const ul = document.createElement('ul');
 
   articlesToRender.forEach((item) => {
