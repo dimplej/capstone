@@ -14,12 +14,14 @@ async function getJson(block) {
 
 
   // Filter and sort: only /magazine items with images, sorted by lastModified
-  const filteredData = data
+const filteredData = data
     .filter((item) =>
-      item.path?.startsWith('/magazine') &&
+      item.path?.startsWith('/magazine/') &&
+      item.image &&
       item.image.trim() !== ''
     )
     .sort((a, b) => (b.lastModified || 0) - (a.lastModified || 0));
+
   // Slice only first 4 if on index page
 const articlesToRender = filteredData.slice(0, 4);
   console.log("articles: " + JSON.stringify(filteredData, null, 2));

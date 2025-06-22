@@ -13,9 +13,9 @@ export default async function decorate(block) {
 
 
   // Filter and sort: only /magazine items with images, sorted by lastModified
-  const filteredData = data
+const filteredData = data
     .filter((item) =>
-      item.path?.startsWith('/magazine') &&
+      item.path?.startsWith('/magazine/') &&
       item.image &&
       item.image.trim() !== ''
     )
@@ -25,7 +25,7 @@ export default async function decorate(block) {
   const isIndexPage = path === '/' || path.endsWith('/index') || path.endsWith('/index.html');
   // Slice only first 4 if on index page
   const articlesToRender = isIndexPage ? filteredData.slice(0, 4) : filteredData;
-
+console.log("From articles block");
   const ul = document.createElement('ul');
 
   articlesToRender.forEach((item) => {
