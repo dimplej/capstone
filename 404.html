@@ -2,60 +2,31 @@
 <html>
 
 <head>
-   <script type="module">
-    import { loadHeader } from '/scripts/aem.js';
-    loadHeader(document.querySelector('header'));
-  </script>
-  <title>Page not found 123</title>
+  <title>Page not found</title>
   <script type="text/javascript">
     window.isErrorPage = true;
     window.errorCode = '404';
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="Page not found">
-  <script src="/scripts/scripts.js" type="module"></script>
-  <script type="module">
-    window.addEventListener('load', () => {
-      if (document.referrer) {
-        const { origin, pathname } = new URL(document.referrer);
-        if (origin === window.location.origin) {
-          const backBtn = document.createElement('a');
-          backBtn.classList.add('button', 'error-button-back');
-          backBtn.href = pathname;
-          backBtn.textContent = 'Go back please';
-          backBtn.title = 'Go back';
-          const btnContainer = document.querySelector('.button-container');
-          btnContainer.append(backBtn);
-        }
-      }
-    });
-  </script>
-  <script type="module">
-    import { sampleRUM } from '/scripts/aem.js';
-    sampleRUM('404', { source: document.referrer });
-  </script>
-  <link rel="stylesheet" href="/errorPage404.css">
+  <script src="/scripts/scripts.js" type="module" crossorigin="use-credentials"></script>
+  <link rel="stylesheet" href="/styles/styles.css">
+   <link rel="stylesheet" href="/errorPage404.css">
   <link rel="stylesheet" href="/styles/lazy-styles.css">
 </head>
 
 <body>
   <header></header>
-  <div class="face">
-	<div class="band">
-		<div class="red"></div>
-		<div class="white"></div>
-		<div class="blue"></div>
-	</div>
-	<div class="eyes"></div>
-	<div class="dimples"></div>
-	<div class="mouth"></div>
-</div>
-
-<h1>Oops! Something went wrong!</h1>
-  <h4> The Page you are looking for is not found</h4>
-<a href="/" class="btn">Return to Home</a>
-  <footer>
-  </footer>
+  <main class="error">
+    <div class="section">
+      <img src="/icons/dog.jpeg" alt="Page Not Found image ">
+      <div class="error-message">
+        <h2 >Ruh-Roh! Page Not Found</h2>
+        <p>We're sorry, we are unable to fetch this page!</p>
+      </div>
+    </div>
+  </main>
+  <footer></footer>
 </body>
 
 </html>
