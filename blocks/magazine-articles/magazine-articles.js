@@ -1,4 +1,4 @@
-export default async function decorate(block) {
+async function getJson(block) {
   const jsonLink = block.querySelector('a[href$=".json"]');
   if (!jsonLink) return;
 
@@ -17,31 +17,17 @@ export default async function decorate(block) {
   const filteredData = data
     .filter((item) =>
       item.path?.startsWith('/magazine') &&
-      item.image &&
       item.image.trim() !== ''
     )
     .sort((a, b) => (b.lastModified || 0) - (a.lastModified || 0));
-
-  const path = window.location.pathname;
-  const isIndexPage = path === '/' || path.endsWith('/index') || path.endsWith('/index.html');
-  console.log(path);
-  console.log("is index page : " + isIndexPage);
   // Slice only first 4 if on index page
-  const articlesToRender = isIndexPage ? filteredData.slice(0, 4) : filteredData;
+const articlesToRender = filteredData.slice(0, 4);
   console.log("articles: " + JSON.stringify(filteredData, null, 2));
 
   const ul = document.createElement('ul');
 
   articlesToRender.forEach((item) => {
     const li = document.createElement('li');
-
-    // Image
-    const imageWrapper = document.createElement('div');
-    imageWrapper.className = 'articles-card-image';
-    const img = document.createElement('img');
-    img.src = item.image;
-    img.alt = item.title;
-    imageWrapper.appendChild(img);
 
     // Body
     const body = document.createElement('div');
@@ -53,35 +39,71 @@ export default async function decorate(block) {
     titleLink.textContent = item.title;
     title.appendChild(titleLink);
 
-    const desc = document.createElement('p');
-    desc.textContent = item.description;
-
     const date = document.createElement('p');
     date.className = 'articles-card-date';
     if (item.lastModified) {
-      date.textContent = `Last updated: ${formatDate(item.lastModified)}`;
+      date.textContent = `${formatDate(item.lastModified)}`;
     }
 
     body.appendChild(title);
-    body.appendChild(desc);
     body.appendChild(date);
-
-    li.appendChild(imageWrapper);
     li.appendChild(body);
     ul.appendChild(li);
   });
-console.log("block is : "+block.innerHTML);
-  block.innerHTML = '';
-  block.append(ul);
+ const buttonContainer = block.querySelector('.button-container');
+  if (buttonContainer) buttonContainer.remove();
+  block.appendChild(ul);
+
+  block.append(ul)
 }
 
 function formatDate(ts) {
-  if (!ts) return 'Date Unknown';
+  if (!ts) return 'DATE UNKNOWN';
   const d = new Date(ts * 1000); // assuming timestamp is in seconds
-  return d.toLocaleDateString('en-US', {
+
+  const options = {
     weekday: 'long',
-    month: 'short',
     day: 'numeric',
+    month: 'short',
     year: 'numeric',
+  };
+
+  const parts = d.toLocaleDateString('en-GB', options).split(' ');
+  // Example output: ["Thursday,", "19", "Jun", "2025"]
+
+  // Add comma after the day (2nd part)
+  if (parts.length >= 4) {
+    parts[0] = parts[0]+',';
+  }
+
+  console.log(parts);
+  return parts.join(' ').toUpperCase();
+}
+
+
+
+export default async function decorate(block) {
+    console.log("Magzine Articles");
+  const cols = [...block.firstElementChild.children];
+  block.classList.add(`columns-${cols.length}-cols`);
+
+  // setup image columns
+  [...block.children].forEach((row) => {
+    [...row.children].forEach((col) => {
+      const pic = col.querySelector('picture');
+      if (pic) {
+        const picWrapper = pic.closest('div');
+        if (picWrapper && picWrapper.children.length === 1) {
+          // picture is only content in column
+          picWrapper.classList.add('columns-img-col');
+        }
+      }
+      const json = col.querySelector('a[href$=".json"]');
+      if(json){
+        getJson(col);
+        
+      }
+    });
   });
 }
+

@@ -1,85 +1,236 @@
+/* Uppercase all key text */
+.articles-card-body h2,
+.articles-card-body h2 a,
+.articles-card-body p,
+.articles-card-date {
+  text-transform: uppercase;
+}
 
+/* Main article container */
 .articles > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 24px; /* space between articles */
+  gap: 24px;
 }
 
+/* Article cards: 4 per row */
 .articles > ul > li {
-  flex: 0 0 calc(25% - 18px); /* 4 items per row with gap adjustment */
+  flex: 1 1 calc(25% - 18px);
   box-sizing: border-box;
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+  background-color: var(--background-color, #fff);
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
 }
 
-.articles .articles-card-body {
-  margin: 8px;
+.articles > ul > li:hover {
+  transform: translateY(-4px);
 }
 
-.articles .articles-card-image {
+/* Image wrapper */
+.articles-card-image {
   line-height: 0;
 }
-
-.articles > ul > li img {
+.articles-card-image img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  display: block;
 }
 
-.articles .articles-card-body h2 {
-  font-size: 20px;
+/* Card body */
+.articles-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
+/* Heading */
+.articles-card-body h2 {
+  font-size: 18px;
+  line-height: 1.2;
+  margin: 0 0 8px;
+  font-family: var(--body-font-family, sans-serif);
+}
+.articles-card-body h2 a {
+  color: #000;
+  text-decoration: none;
+  font-weight: normal;
+}
+.articles-card-body h2 a:hover {
+  text-decoration: underline;
+}
 
-.articles .articles-card-body p {
-  color: dimgray;
-  font-size: var(--fontSizeSmall, 14px);
-  margin-top: 1rem;
-
-  /* trunkate to half a line with ellipsis */
-  overflow: hidden;
-  text-overflow: ellipsis;
+/* Description */
+.articles-card-body p {
+  color: #444;
+  font-size: 14px;
+  margin: 0 0 8px;
+  line-height: 1.2;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-
-  /* limit to one line (webkit) */
   -webkit-line-clamp: 1;
-
-  /* standard property (where supported) */
-  line-clamp: 1;
-
-  /* tighten the visible height to about half a line */
-  line-height: 1.2;
-  max-height: 1.6em;
-  text-transform: uppercase;
-}
-
-@media (width >= 900px) {
-  .articles .articles-card-body p {
-  color: dimgray;
-  font-size: var(--fontSizeSmall, 14px);
-  margin-top: 1rem;
-
-  /* trunkate to half a line with ellipsis */
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
+}
 
-  /* limit to one line (webkit) */
-  -webkit-line-clamp: 1;
+/* Date text */
+.articles-card-date {
+  font-size: 12px;
+  color: #888;
+  margin-top: auto;
+}
 
-  /* standard property (where supported) */
-  line-clamp: 1;
+/* "Recent Articles" underline */
+#recent-articles {
+  position: relative;
+  padding-bottom: 8px;
+  margin-bottom: 24px;
+}
+#recent-articles::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 80px;
+  background-color: yellow;
+}
 
-  /* tighten the visible height to about half a line */
-  line-height: 1.2;
-  max-height: 1.6em;
+/* "All Articles" button */
+.articles-container .default-content-wrapper .button-container a.button:any-link {
+  background-color: #ffeb3b;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background-color 0.2s;
+  display: inline-block;
 }
+.articles-container .default-content-wrapper .button-container a.button:hover {
+  background-color: #fdd835;
 }
 
-  
+/* Media Queries */
+
+/* Tablet: 2 per row */
+@media (max-width: 900px) {
+  .articles > ul > li {
+    flex: 1 1 calc(50% - 12px);
+  }
+
+  .articles-card-body p {
+    font-size: 13px;
+    -webkit-line-clamp: 1;
+  }
+}
+
+/* Mobile: 1 per row */
+  @media (max-width: 480px) {
+  .articles > ul {
+    flex-direction: column;
+    gap: 24px; /* Increased gap for clarity */
+    padding: 0;
+    margin: 0;
+  }
+
+  .articles > ul > li {
+    flex: 1 1 100%;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 1px solid #ddd; /* Light divider like WKND */
+    padding-bottom: 16px;
+  }
+
+  .articles-card-image img {
+    width: 80%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
+
+  .articles-card-body {
+   padding: 16px 16px 16px 8px;
+     width: 80%;
+      margin: 0; /* center the text block */
+  padding: 8px 0; /* uniform padding */
+  }
+  .articles-card-body h2 {
+    font-size: 16px;
+    line-height: 1.3;
+    margin: 0 0 6px;
+  }
+
+  .articles-card-body p {
+    font-size: 13px;
+    line-height:2.5;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    color: #555;
+  }
+
+  .articles-card-date {
+    font-size: 11px;
+    color: #888;
+    margin-top: 6px;
+  }
+
+  /* 1. Reset for flex (if needed) */
+  .section.magazine-image-container {
+    position: relative; /* prepare for absolute positioning */
+  }
+
+  /* 2. Assign z-index and visual stacking */
+  .section.magazine-image-container > div {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* 3. Push the share block to bottom visually */
+  .section.magazine-image-container > div:nth-child(2) {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    background: inherit;
+    z-index: 2;
+  }
+
+  /* 4. Push author block just above it */
+  .section.magazine-image-container > .magazine-author-wrapper {
+    position: absolute;
+    bottom: calc(100% - /* share-block height */ 200px);
+    width: 100%;
+    background: inherit;
+    z-index: 2;
+  }
+
+  /* 5. Add bottom padding to container to prevent overlap */
+  .section.magazine-image-container {
+    padding-bottom: 400px; /* leave space for author + share blocks */
+  }
+}
+
+
+
+
+  }
+
+
