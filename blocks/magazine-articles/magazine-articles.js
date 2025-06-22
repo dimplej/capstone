@@ -53,6 +53,12 @@ const articlesToRender = filteredData.slice(0, 4);
  const buttonContainer = block.querySelector('.button-container');
   if (buttonContainer) buttonContainer.remove();
   block.appendChild(ul);
+  if(block.firstElementChild.innerText.indexOf("{Mweb}") > 0){
+    block.firstElementChild.innerText = block.firstElementChild.innerText.replaceAll("{Mweb}", "");
+    block.className = "share-this-story share-this-story-mweb hidden";
+  }else{
+    block.className = "share-this-story share-this-story-desktop";
+  }
 
   block.append(ul)
 }
@@ -101,9 +107,9 @@ export default async function decorate(block) {
       const json = col.querySelector('a[href$=".json"]');
       if(json){
         getJson(col);
-        
       }
     });
   });
 }
 
+ 

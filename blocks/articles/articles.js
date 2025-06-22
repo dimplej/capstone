@@ -6,7 +6,6 @@ export default async function decorate(block) {
   try {
     const res = await fetch(new URL(jsonLink.href).pathname);
     data = (await res.json()).data;
-    console.log(data);
   } catch {
     console.error('Failed to fetch articles JSON');
     return;
@@ -24,11 +23,8 @@ export default async function decorate(block) {
 
   const path = window.location.pathname;
   const isIndexPage = path === '/' || path.endsWith('/index') || path.endsWith('/index.html');
-  console.log(path);
-  console.log("is index page : " + isIndexPage);
   // Slice only first 4 if on index page
   const articlesToRender = isIndexPage ? filteredData.slice(0, 4) : filteredData;
-  console.log("articles: " + JSON.stringify(filteredData, null, 2));
 
   const ul = document.createElement('ul');
 
@@ -70,8 +66,8 @@ export default async function decorate(block) {
     li.appendChild(body);
     ul.appendChild(li);
   });
-console.log("block is : "+block.innerHTML);
   block.innerHTML = '';
+
   block.append(ul);
 }
 
