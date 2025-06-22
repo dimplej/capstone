@@ -235,6 +235,68 @@ justify-content: flex-start;
   display:none;
 }
 
+/* === Style the heading: "Share this story" === */
+.share-this-story-desktop > p:first-of-type {
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+/* === Style the first "Download PDF" h3 link === */
+.share-this-story-desktop > h3#download-pdf {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 0.5rem 0;
+}
+
+.share-this-story-desktop > h3#download-pdf a {
+  color: #111;
+  text-decoration: none;
+}
+
+.share-this-story-desktop > h3#download-pdf a:hover {
+  text-decoration: underline;
+}
+
+/* === Style file name, size, and type === */
+.share-this-story-desktop > p:nth-of-type(2),
+.share-this-story-desktop > p:nth-of-type(3),
+.share-this-story-desktop > p:nth-of-type(4) {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* === Style final big download button === */
+.share-this-story-desktop > h3#download-pdf-1 {
+  margin-top: 1rem;
+}
+
+.share-this-story-desktop > h3#download-pdf-1 a {
+  display: inline-block;
+  background-color: #1a1a1a;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 24px;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  border-radius: 2px;
+}
+
+.share-this-story-desktop > h3#download-pdf-1 a::before {
+  content: "⬇️";
+  display: inline-block;
+  margin-right: 8px;
+  position: relative;
+  top: 1px;
+}
+
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
 
@@ -272,6 +334,84 @@ justify-content: flex-start;
   .quote-wrapper .quote.block {
     max-width:100%
   }
+ 
+ /* === DOWNLOAD PDF SECTION (DESKTOP) === */
+
+/* Parent remains block */
+.share-this-story-desktop {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Style "Download PDF" heading */
+.share-this-story-desktop > h3#download-pdf {
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+  color: #111;
+}
+
+/* Style "Get the Full Story" */
+.share-this-story-desktop > p:nth-of-type(2) {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  color: #111;
+}
+
+/* Style filename */
+.share-this-story-desktop > p:nth-of-type(3) {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Wrap 139 KB and application/pdf in visual flex line */
+.share-this-story-desktop > p:nth-of-type(4),
+.share-this-story-desktop > p:nth-of-type(5) {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Force line appearance using inline wrapper via ::after trick */
+.share-this-story-desktop > p:nth-of-type(4)::after {
+  content: " ";
+  display: inline-block;
+  width: 1rem;
+}
+
+/* "Download PDF" button */
+.share-this-story-desktop > h3#download-pdf-1 {
+  margin-top: 1rem;
+}
+
+.share-this-story-desktop > h3#download-pdf-1 a {
+  display: inline-block;
+  background-color: #1a1a1a;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 24px;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.share-this-story-desktop > h3#download-pdf-1 a::before {
+  content: "⬇️";
+  display: inline-block;
+  margin-right: 8px;
+  position: relative;
+  top: 1px;
+}
+
+
+
 
 }
  
