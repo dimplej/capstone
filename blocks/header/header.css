@@ -206,6 +206,7 @@ header nav[aria-expanded='true']::before {
   width: 100vw;
   height: 100vh;
   z-index: 998;
+  pointer-events: none;
 }
 
 /*======================
