@@ -83,6 +83,7 @@ function formatDate(ts) {
 
 
 export default async function decorate(block) {
+    console.log("Magzine Articles");
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
 
