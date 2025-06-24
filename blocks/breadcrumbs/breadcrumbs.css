@@ -6,7 +6,7 @@
 .breadcrumb-container {
   display: flex;
   align-items: center;
-  font-size: 16px;
+  font-size: var(--body-font-size-s);
 }
 
 .breadcrumb-container li {
@@ -16,7 +16,7 @@
 }
 
 .breadcrumb-container a {
-  color: #333;
+  color:var(--dark-color);
   text-decoration: none;
   padding: 4px 8px;
   border-radius: 4px;
@@ -27,13 +27,13 @@
 }
 
 .breadcrumb-container li[aria-current="page"] span {
-  color: #000;
+  color: var(--text-color);
   text-transform: capitalize;
 }
 
 .breadcrumb-container li + li::before {
   content: "▶";
-  color: #ffb700;
+  color: var(--yellow-color);
   margin: 0 8px;
-  font-size: 16px;
+  font-size:var(--body-font-size-s);
 }

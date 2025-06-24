@@ -46,7 +46,7 @@ header nav .nav-sections {
   visibility: hidden;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
-  background-color: #1a1a1a;
+  background-color: var(--text-color);
   position: fixed;
   top: 0;
   left: 0;
@@ -54,7 +54,7 @@ header nav .nav-sections {
   height: 100vh;
   padding: 2rem 1rem;
   z-index: 999;
-  color: white;
+  color: var(--background-color);
   flex-direction: column;
 }
 
@@ -87,13 +87,13 @@ header nav .nav-sections ul > li > a {
   width: 100%;
   display: block;
   padding: 0.5rem 0;
-  color: white;
+  color:var(--background-color);
   border-bottom: 1px solid #333;
 }
 
 header nav .nav-sections ul > li:hover,
 header nav .nav-sections ul > li > a:hover {
-  background-color: yellow;
+  background-color: var(--yellow-color);
   text-decoration: none;
 }
 
@@ -120,7 +120,7 @@ header nav .nav-hamburger button {
   display: block;
   width: 24px;
   height: 2px;
-  background-color: #000;
+  background-color:  var(--text-color);
   position: relative;
   border-radius: 1px;
 }
@@ -131,7 +131,7 @@ header nav .nav-hamburger button {
   position: absolute;
   width: 24px;
   height: 2px;
-  background-color: #000;
+  background-color:  var(--text-color);
   border-radius: 1px;
   left: 0;
 }
@@ -186,12 +186,12 @@ header nav .nav-tools {
   border-radius: 0.5rem;
   box-sizing: border-box;
   transition: border-color 0.3s, box-shadow 0.3s;
-  background-color: white;
+  background-color: var(--background-color);
   z-index: 2;
 }
 
 header nav .nav-tools:focus {
-  border-color: #007aff;
+  border-color: var(--link-hover-color);
   box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
 }
 
@@ -216,14 +216,14 @@ header nav[aria-expanded='true']::before {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1a1a1a;
+  background-color: var(--text-color);
   font-size: 0.9rem;
   position: relative;
 }
 
 .top-bar-container p {
   margin-right: auto;
-  color: white !important;
+  color: var(--background-color) !important;
   font-weight: 500;
 }
 
@@ -231,7 +231,7 @@ header nav[aria-expanded='true']::before {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  color: white;
+  color: var(--background-color);
   cursor: default;
 }
 
@@ -244,10 +244,13 @@ header nav[aria-expanded='true']::before {
 }
 
 .top-signin {
-  color: #fff;
+  color: var(--background-color);
   text-decoration: none;
   font-weight: 500;
   padding: 10px;
+}
+.top-bar.block p {
+  cursor: pointer;
 }
 
 /*======================
@@ -261,14 +264,14 @@ header .nav-wrapper .form-container {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--text-color);
   z-index: 1000;
   padding: 50px 16px;
   box-sizing: border-box;
 }
 
 header .nav-wrapper .form-container .form-wrapper {
-  background-color: #fff;
+  background-color:  var(--background-color);
   padding: 20px;
   margin: auto;
   max-width: 400px;
@@ -289,33 +292,33 @@ header .nav-wrapper .form-container .field-wrapper.text-wrapper {
 
 header .nav-wrapper .form-container label {
   display: block;
-  font-size: 14px;
+  font-size:var(--body-font-size-xs);
   font-weight: bold;
   margin-bottom: 5px;
-  color: #000;
+  color:var(--text-color);
 }
 
 header .nav-wrapper .form-container input[type="text"] {
   width: 100%;
   padding: 10px;
-  border: 2px solid #ccc;
+  border: 2px solid  var(--background-color);
   border-radius: 5px;
-  background-color: #fff;
-  color: #000;
-  font-size: 14px;
+  background-color:  var(--background-color);
+  color: var(--text-color);
+  font-size: var(--body-font-size-xs);
 }
 
 header .nav-wrapper .form-container input[type="text"]::placeholder {
-  color: #888;
+  color:  var(--dark-color);
 }
 
 header .nav-wrapper .form-container .submit-wrapper button {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--text-color);
+  color: var(--background-color);
   padding: 10px;
   border: none;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: var(--body-font-size-xs);
   font-weight: bold;
   cursor: pointer;
   text-transform: uppercase;
@@ -357,7 +360,7 @@ header .nav-wrapper .form-container .submit-wrapper button {
   header nav .nav-sections ul {
     flex-direction: row;
     gap: 24px;
-        color: black;
+        color: var(--text-color);
     align-items: center;
   }
 
@@ -413,6 +416,6 @@ header .nav-wrapper .form-container .submit-wrapper button {
   }
 
   header nav .nav-sections ul > li{
-  color: white;
+  color: var(--background-color);
   }
 }

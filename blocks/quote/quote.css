@@ -10,11 +10,11 @@
 }
 
 .quote-wrapper .quote.block {
-  background-color: #eee;
+  background-color: var(--dimgrey-color);
   padding: 40px 24px;
   max-width: 60%;
   box-sizing: border-box;
-  font-family: Georgia, serif;
+  font-family: var(--body-font-family);
   text-align: left;
 }
 
@@ -27,7 +27,7 @@
 
 /* Heading */
 .quote-wrapper .quote.block h4 {
-  font-size: 20px;
+  font-size: var(--heading-font-size-s);
   margin: 0 0 16px;
   font-weight: bold;
 }
@@ -42,11 +42,11 @@
 
 /* Definition */
 .quote-wrapper .quote.block p:last-of-type {
-  font-size: 18px;
+  font-size: var(--body-font-size-m);
   margin: 0;
   padding-top: 24px;
   position: relative;
-  color: #111;
+  color:var(--text-color);
 }
 
 /* Decorative line */
@@ -55,7 +55,7 @@
   display: block;
   width: 140px;
   height: 3px;
-  background-color: #ffdd33;
+  background-color: var(--yellow-color);
   margin-bottom: 12px;
 }
 

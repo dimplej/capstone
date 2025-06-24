@@ -1,8 +1,8 @@
 .columns.block.columns-2-cols {
   display: flex;
   flex-direction: column;
-  font-family: 'Georgia', serif;
-  background-color: #f5f5f5;
+  font-family: var(--body-font-family);
+  background-color: var(--background-color);
 }
 
 .columns.block.columns-2-cols > div {
@@ -21,15 +21,15 @@
 
 .columns.block.columns-2-cols [data-align="justify"] {
   padding: 32px 20px;
-  background-color: #ebebeb;
+  background-color:var(--dimgrey-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .columns.block.columns-2-cols [data-align="justify"] p:first-child  {
-  background-color:#ebebeb;
-  color: black;
+  background-color:var(--dimgrey-color);
+  color:  var(--text-color);
   padding: 6px 12px;
   font-size: 1rem;
   display: inline-block;
@@ -37,8 +37,8 @@
 }
 
 .columns.block.columns-2-cols h2 {
-  background-color: #ebebeb;
-  color:black ;
+  background-color: var(--dimgrey-color);
+  color: var(--text-color) ;
   font-size: 2rem;
   line-height: 1.2;
   font-weight: 700;
@@ -47,8 +47,8 @@
 }
 
 .columns.block.columns-2-cols [data-align="justify"] p:not(:first-child):not(.button-container) {
-  background-color: #ebebeb;
-  color: black;
+  background-color: var(--dimgrey-color);
+  color: var(--text-color);
   font-size: 1rem;
   line-height: 1.6;
   padding: 14px;
@@ -60,8 +60,8 @@
 }
 
 .columns.block.columns-2-cols .button-container .button {
-  background-color: #fde047; /* Bright yellow */
-  color: #000;
+  background-color: var(--yellow-color); /* Bright yellow */
+  color: var(--text-color);
   font-weight: bold;
   text-transform: uppercase;
   text-decoration: none;

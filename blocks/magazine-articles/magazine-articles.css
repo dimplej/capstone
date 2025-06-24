@@ -3,9 +3,9 @@ html, body {
   line-height: 2.5;
   margin: 0;
   padding: 0;
-  font-family: 'Helvetica Neue', sans-serif;
-  color: #222;
-  background-color: #fff;
+  font-family: var(--body-font-family);
+  color:var(--text-color);
+  background-color: var(--background-color);
    text-align: justify;
 }
 
@@ -32,9 +32,9 @@ html, body {
 .magazine-articles.block.columns-2-cols > div > div:last-child {
   flex: 1 1 0%;
   padding-left: 2rem;
-  background-color: #fff;
+  background-color: var(--background-color);
   border-left: none;
-  font-size: 16px;
+  font-size: var(--body-font-size-s);
   padding-bottom: 20px;
 }
 
@@ -56,8 +56,8 @@ html, body {
 }
 
 .share-this-story ul li:hover {
-  background-color: #ffef00;
-  border-left-color: #000;
+  background-color: var(--yellow-color);
+  border-left-color: var(--text-color);
 }
 
 /* === ARTICLE CARD === */
@@ -68,9 +68,9 @@ html, body {
 }
 
 .magazine-articles .articles-card-body h2 {
-  font-size: 18px;
+  font-size:var(--heading-font-size-xs);
   font-weight: normal !important;
-  color: #111;
+  color: var(--text-color);
   text-transform: uppercase;
   margin: 0 0 0.5rem;
   line-height: 1.4;
@@ -82,12 +82,12 @@ html, body {
 }
 
 .magazine-articles .articles-card-body a:hover h2 {
-  color: #000;
+  color: var(--text-color);
 }
 
 .magazine-articles .articles-card-date {
   font-size: 0.875rem;
-  color: #888;
+  color: var(--dark-color);
   font-weight: 400;
   margin-top: 0.25rem;
 }
@@ -100,22 +100,22 @@ html, body {
 
 /* === Style the heading: "Share this story" === */
 .share-this-story-desktop > p:first-of-type {
-  font-size: 14px;
+  font-size: var(--body-font-size-xs);
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 1rem;
-  color: #111;
+  color: var(--text-color);
 }
 
 /* === Style the first "Download PDF" h3 link === */
 .share-this-story-desktop > h3#download-pdf {
-  font-size: 20px;
+  font-size: var(--body-font-size-m);
   font-weight: bold;
   margin: 0 0 0.5rem 0;
 }
 
 .share-this-story-desktop > h3#download-pdf a {
-  color: #111;
+  color:var(--text-color);
   text-decoration: none;
 }
 
@@ -127,8 +127,8 @@ html, body {
 .share-this-story-desktop > p:nth-of-type(2),
 .share-this-story-desktop > p:nth-of-type(3),
 .share-this-story-desktop > p:nth-of-type(4) {
-  font-size: 14px;
-  color: #666;
+  font-size: var(--body-font-size-xs);
+  color: var(--dark-color);
   margin: 0;
   line-height: 1.4;
 }
@@ -141,11 +141,11 @@ html, body {
 .share-this-story-desktop > h3#download-pdf-1 a {
   display: inline-block;
   background-color: #1a1a1a;
-  color: #fff;
+  color: var(--background-color);
   text-decoration: none;
   padding: 12px 24px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: var(--heading-font-size-xs);
   border: none;
   cursor: pointer;
   position: relative;
@@ -178,7 +178,7 @@ html, body {
   .magazine-articles.block.columns-2-cols > div > div:last-child {
     padding-left: 0;
     margin-top: 2rem;
-    font-size: 16px;
+    font-size: var(--body-font-size-s);
   }
 
   
@@ -195,25 +195,25 @@ html, body {
 
 /* Style "Download PDF" heading */
 .share-this-story-desktop > h3#download-pdf {
-  font-size: 14px;
+  font-size:  var(--heading-font-size-xs);
   font-weight: bold;
   text-transform: uppercase;
   margin: 0;
-  color: #111;
+  color:var(--text-color);
 }
 
 /* Style "Get the Full Story" */
 .share-this-story-desktop > p:nth-of-type(2) {
-  font-size: 18px;
+  font-size:  var(--body-font-size-m);
   font-weight: bold;
   margin: 0;
-  color: #111;
+  color: var(--text-color);
 }
 
 /* Style filename */
 .share-this-story-desktop > p:nth-of-type(3) {
-  font-size: 14px;
-  color: #666;
+  font-size: var(--body-font-size-xs);
+  color: var(--dark-color);
   margin: 0;
   text-transform: uppercase;
 }
@@ -221,8 +221,8 @@ html, body {
 /* Wrap 139 KB and application/pdf in visual flex line */
 .share-this-story-desktop > p:nth-of-type(4),
 .share-this-story-desktop > p:nth-of-type(5) {
-  font-size: 14px;
-  color: #666;
+  font-size:  var(--body-font-size-xs);
+  color: var(--dark-color);
   margin: 0;
   display: inline-block;
   white-space: nowrap;
@@ -242,12 +242,12 @@ html, body {
 
 .share-this-story-desktop > h3#download-pdf-1 a {
   display: inline-block;
-  background-color: #1a1a1a;
-  color: #fff;
+  background-color: var(--text-color);
+  color: var(--background-color);
   text-decoration: none;
   padding: 12px 24px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: var(--heading-font-size-xs);
   border-radius: 4px;
 }
 

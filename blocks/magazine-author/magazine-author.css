@@ -43,16 +43,16 @@
 }
 
 .magazine-author > div > div:nth-child(2) p:first-child {
-  font-family: Georgia, serif;
-  font-size: 18px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
   font-weight: 500;
   margin: 0;
 }
 
 .magazine-author > div > div:nth-child(2) p:last-child {
-  font-size: 12px;
+  font-size: var(--body-font-size-xs);
   text-transform: uppercase;
-  color: #666;
+  color: var(--dark-color);
   margin: 4px 0 0;
   letter-spacing: 0.5px;
 }
@@ -106,12 +106,12 @@
   }
 
   .magazine-author > div > div:nth-child(2) p:first-child {
-    font-size: 28px;
+    font-size: var(--heading-font-size-l);
   }
 
   .magazine-author > div > div:nth-child(2) p:last-child {
-    font-size: 14px;
-  }
+    font-size: var(--body-font-size-xs);
+  } 
 
   .magazine-author > div > div:nth-child(3) {
     align-self: center;

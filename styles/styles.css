@@ -18,6 +18,9 @@
   --text-color: #131313;
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
+  --yellow-color: #ffff00;
+  --dimgrey-color: #eee;
+  
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
@@ -249,6 +252,7 @@ main > .section:first-of-type {
 @media (width >= 900px) {
   main > .section > div {
     padding: 0 32px;
+    padding-top:0
   }
 }
 
@@ -262,6 +266,6 @@ main .section.highlight {
 
 @media (max-width: 786px) {
   main {
-    padding-top: 180px;
+    padding-top: 120px;
   }
 }

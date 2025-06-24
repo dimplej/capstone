@@ -19,8 +19,8 @@ main {
 
 .default-content-wrapper h1 {
   font-size: var(--heading-font-size-xxl);
-  font-family: var(--body-font-family, sans-serif);
-  color: #000;
+  font-family: var(--heading-font-family, sans-serif);
+  color: var(--text-color);
   white-space: nowrap;
   overflow-x: auto;
  font-weight:normal;
@@ -66,8 +66,8 @@ main {
 }
 
 .about-us.block p {
-  font-size: 0.95rem;
-  color: #666;
+  font-size:var(--body-font-size-m);
+  color: var(--dark-color);
   margin: 0;
 }
 
@@ -83,9 +83,9 @@ main {
 .default-content-wrapper h3 {
   position: relative;
   display: inline-block;
-  font-size: 2rem;
+  font-size: var(--heading-font-size-l);
   margin-bottom: 10px;
-  font-family: var(--fontFamilySerif, "Asar", Georgia, "Times New Roman", Times, serif);
+  font-family: var(--heading-font-family);
 }
 
 .default-content-wrapper h3::after {
@@ -100,7 +100,7 @@ main {
 
 .default-content-wrapper p:not(footer .default-content-wrapper p) {
   font-size: 1.1rem;
-  color: #555;
+  color: var(--dark-color);
   line-height: 1.6;
   margin: 0;
 }
