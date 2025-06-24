@@ -20,7 +20,9 @@
   --link-hover-color: #1d3ecf;
   --yellow-color: #ffff00;
   --dimgrey-color: #eee;
-  
+  --overlay-bg-color: rgba(0, 0, 0, 0.5);
+  --input-box-color: #ccc;
+
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
@@ -266,6 +268,6 @@ main .section.highlight {
 
 @media (max-width: 786px) {
   main {
-    padding-top: 120px;
+    padding-top: 200px;
   }
 }

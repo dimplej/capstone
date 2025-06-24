@@ -108,21 +108,15 @@ export default async function decorate(block) {
   const nav = document.createElement('nav');
   nav.id = 'nav';
 
-   // ----- CREATE TOP STATIC BAR (added code)-----
-  const topBar = document.createElement('div');
-  topBar.className = 'top-bar';
 
- while (fragment.firstElementChild) {
-    if(fragment.firstElementChild.children.length > 0) {
-      if(fragment.firstElementChild.classList.contains('top-bar-container') || fragment.firstElementChild.classList.contains('form-container')) {
-        topBar.append(fragment.firstElementChild);
-      } else {
-        nav.append(fragment.firstElementChild);
-      }
-    } else {
-      fragment.removeChild(fragment.firstElementChild);
-    } 
-  }
+    var filteredFragments = Array.from(fragment.children).filter(function(child){
+      //console.log(child);
+      return child.classList.contains("top-bar-container") == false && child.classList.contains("form-container") == false;
+    })
+    
+    for(let i=0; i<filteredFragments.length;i++){
+        nav.append(filteredFragments[i]);
+    }
 
   const classes = ['brand', 'sections', 'tools'];
   classes.forEach((c, i) => {
@@ -165,24 +159,6 @@ export default async function decorate(block) {
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
 
 
-
-  /*const langSelector = document.createElement('div');
-  langSelector.className = 'top-lang-selector';
-
-  const flag = document.createElement('img');
-  flag.src = '/icons/us-flag.png'; // Replace with your flag icon
-  flag.alt = 'US Flag';
-  flag.className = 'top-flag';
-
-  const langText = document.createElement('span');
-  langText.textContent = 'EN-US';
-
-  const caret = document.createElement('span');
-  caret.className = 'top-caret';
-  caret.innerHTML = '&#9662;';
-
-  langSelector.append(flag, langText, caret);
-  */
   // === Add scroll shadow effect ===
   const header = document.querySelector('header');
 
@@ -199,36 +175,7 @@ export default async function decorate(block) {
     // ---- FINAL WRAP ----
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
-  navWrapper.append(topBar,nav);
-  block.append(navWrapper);
-
-  // Add click event to toggle form visibility
-  const signInButton = block.querySelector('.top-bar-container');
-  if (signInButton) {
-    signInButton.addEventListener("click", (e) => {
-      e.preventDefault(); // Prevent default anchor behavior
-      const formDiv = block.querySelector(".form-container");
-      if (formDiv) {
-        const isVisible = formDiv.style.display === "block";
-        formDiv.style.display = isVisible ? "none" : "block";
-
-        // Add event listener to close the form when clicking outside
-        if (!isVisible) {
-          const closeOnOutsideClick = (event) => {
-            const formWrapper = formDiv.querySelector('.form-wrapper');
-            // Check if the click is outside the form-wrapper and not on the sign-in button
-            if (!formWrapper.contains(event.target) && !signInButton.contains(event.target)) {
-              formDiv.style.display = "none";
-              document.removeEventListener('click', closeOnOutsideClick);
-            }
-          };
-          // Use setTimeout to avoid immediately closing the form due to the current click event
-          setTimeout(() => {
-            document.addEventListener('click', closeOnOutsideClick);
-          }, 0);
-        }
-      }
-    });
-  }
+  navWrapper.append(nav);
+  block.append(navWrapper);  
   
 }
