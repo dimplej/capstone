@@ -108,29 +108,6 @@ export default async function decorate(block) {
   const nav = document.createElement('nav');
   nav.id = 'nav';
 
-  /* // ----- CREATE TOP STATIC BAR (added code)-----
-  const topBar = document.createElement('div');
-  topBar.className = 'top-bar';
-
- while (fragment.firstElementChild) {
-    if(fragment.firstElementChild.children.length > 0) {
-      if(fragment.firstElementChild.classList.contains('top-bar-container') || fragment.firstElementChild.classList.contains('form-container')) {
-        topBar.append(fragment.firstElementChild);
-      } else {
-        nav.append(fragment.firstElementChild);
-      }
-    } else {
-      fragment.removeChild(fragment.firstElementChild);
-    } 
-  }*/
-  
-  /*while (fragment.firstElementChild){
-    if(fragment.firstElementChild.classList.contains("top-bar-container") == false && fragment.firstElementChild.classList.contains("form-container") == false){
-      nav.append(fragment.firstElementChild);
-    }else{
-      fragment.removeChild(fragment.firstElementChild);
-    }
-  } */
 
     var filteredFragments = Array.from(fragment.children).filter(function(child){
       //console.log(child);
@@ -140,14 +117,6 @@ export default async function decorate(block) {
     for(let i=0; i<filteredFragments.length;i++){
         nav.append(filteredFragments[i]);
     }
-
-  /*for(let i=0; i < fragment.children.length ; i++){
-    if(fragment.children[i].classList.contains("top-bar-container") == false && fragment.children[i].classList.contains("form-container") == false){
-      console.log(i);
-      console.log(fragment.children[i]);
-      nav.append(fragment.children[i]);
-    }
-  }*/
 
   const classes = ['brand', 'sections', 'tools'];
   classes.forEach((c, i) => {
@@ -190,24 +159,6 @@ export default async function decorate(block) {
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
 
 
-
-  /*const langSelector = document.createElement('div');
-  langSelector.className = 'top-lang-selector';
-
-  const flag = document.createElement('img');
-  flag.src = '/icons/us-flag.png'; // Replace with your flag icon
-  flag.alt = 'US Flag';
-  flag.className = 'top-flag';
-
-  const langText = document.createElement('span');
-  langText.textContent = 'EN-US';
-
-  const caret = document.createElement('span');
-  caret.className = 'top-caret';
-  caret.innerHTML = '&#9662;';
-
-  langSelector.append(flag, langText, caret);
-  */
   // === Add scroll shadow effect ===
   const header = document.querySelector('header');
 

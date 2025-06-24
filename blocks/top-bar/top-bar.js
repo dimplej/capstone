@@ -4,13 +4,7 @@ export default async function decorate(block) {
 
     const navMeta = getMetadata('top-bar');
     const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
-    //const resp = await fetch(`${navPath}.plain.html`);
-    //const fragment = await loadFragment(navPath);
-    //if (resp.ok) {
-      //  console.log(resp.text());
-    //}
     block.textContent = "";
-    //block.classList = "top-bar";
     if (navPath && navPath.startsWith('/')) {
     const resp = await fetch(`${navPath}.plain.html`);
     if (resp.ok) {
@@ -25,12 +19,8 @@ export default async function decorate(block) {
       };
       resetAttributeBase('img', 'src');
       resetAttributeBase('source', 'srcset');
-
-      //decorateMain(main);
-      //await loadSections(main);
       
       var filteredFragments = Array.from(main.children).filter(function(child){
-      //console.log(child);
           return child.firstElementChild.classList.contains("top-bar") == true || child.firstElementChild.classList.contains("form") == true;
       })
 
@@ -60,7 +50,6 @@ export default async function decorate(block) {
 
       
 
-      console.log(filteredFragments);
       block.innerHTML = '';
       block.append(topBarContainer);
       block.append(formContainer);
