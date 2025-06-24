@@ -1,0 +1,40 @@
+/*======================
+  TOP BAR
+=======================*/
+.top-bar.block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1a1a;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+.top-bar-container p {
+  margin-right: auto;
+  color: white !important;
+  font-weight: 500;
+}
+
+.top-lang-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: white;
+  cursor: default;
+}
+
+.top-flag {
+  height: 16px;
+}
+
+.top-caret {
+  font-size: 0.6rem;
+}
+
+.top-signin {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px;
+}
