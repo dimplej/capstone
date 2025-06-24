@@ -80,6 +80,10 @@ body {
   line-height: 1.6;
 }
 
+main {
+  padding-top: 150px;
+}
+
 body.appear {
   display: block;
 }
@@ -254,4 +258,10 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+@media (max-width: 786px) {
+  main {
+    padding-top: 180px;
+  }
 }

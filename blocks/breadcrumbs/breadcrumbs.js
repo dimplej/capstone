@@ -20,13 +20,13 @@ function updateBreadcrumbs(breadcrumbContainer) {
   const path = window.location.pathname;
   const pathSegments = path.split('/').filter(segment => segment !== '');
 
-  // Create a "Home" link
+  /*Create a "Home" link
   const homeLink = document.createElement('a');
   homeLink.href = '/';
   homeLink.textContent = 'Home';
   const homeListItem = document.createElement('li');
   homeListItem.appendChild(homeLink);
-  breadcrumbContainer.appendChild(homeListItem);
+  breadcrumbContainer.appendChild(homeListItem);*/
 
   let currentPath = '';
   for (let i = 0; i < pathSegments.length; i++) {

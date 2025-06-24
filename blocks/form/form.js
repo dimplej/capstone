@@ -96,4 +96,9 @@ export default async function decorate(block) {
       }
     }
   });
+  const formEle = document.getElementsByClassName("form");
+  if(formEle){
+    formEle[0].innerHTML = "";
+    formEle[0].replaceChildren(form);
+  }
 }

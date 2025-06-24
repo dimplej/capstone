@@ -13,9 +13,9 @@ export default async function decorate(block) {
 
 
   // Filter and sort: only /magazine items with images, sorted by lastModified
-  const filteredData = data
+const filteredData = data
     .filter((item) =>
-      item.path?.startsWith('/magazine') &&
+      item.path?.startsWith('/magazine/') &&
       item.image &&
       item.image.trim() !== ''
     )
