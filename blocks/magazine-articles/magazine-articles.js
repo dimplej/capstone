@@ -6,7 +6,7 @@ async function getJson(block) {
   try {
     const res = await fetch(new URL(jsonLink.href).pathname);
     data = (await res.json()).data;
-    console.log(data);
+    
   } catch {
     console.error('Failed to fetch articles JSON');
     return;
@@ -14,15 +14,17 @@ async function getJson(block) {
 
 
   // Filter and sort: only /magazine items with images, sorted by lastModified
-  const filteredData = data
+const filteredData = data
     .filter((item) =>
-      item.path?.startsWith('/magazine') &&
+      item.path?.startsWith('/magazine/') &&
+      item.image &&
       item.image.trim() !== ''
     )
     .sort((a, b) => (b.lastModified || 0) - (a.lastModified || 0));
+
   // Slice only first 4 if on index page
 const articlesToRender = filteredData.slice(0, 4);
-  console.log("articles: " + JSON.stringify(filteredData, null, 2));
+  
 
   const ul = document.createElement('ul');
 
@@ -82,14 +84,14 @@ function formatDate(ts) {
     parts[0] = parts[0]+',';
   }
 
-  console.log(parts);
+  
   return parts.join(' ').toUpperCase();
 }
 
 
 
 export default async function decorate(block) {
-    console.log("Magzine Articles");
+    
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
 

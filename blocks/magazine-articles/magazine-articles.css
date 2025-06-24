@@ -301,7 +301,7 @@ justify-content: flex-start;
 @media (max-width: 768px) {
 
   .share-this-story-desktop {
-    display:none;
+    display:none !important;
   }
 
   .share-this-story-mweb.hidden {
@@ -325,10 +325,6 @@ justify-content: flex-start;
 
   .magazine-author > div > div:nth-child(3) {
     align-self: flex-start;
-  }
-
-  .magazine-image-wrapper {
-    padding-top: 180px !important;
   }
 
   .quote-wrapper .quote.block {
