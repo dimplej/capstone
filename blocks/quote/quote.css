@@ -1,0 +1,68 @@
+/* === QUOTE WRAPPER === */
+
+/* === QUOTE WRAPPER === */
+/* === QUOTE WRAPPER (Aligned with content) === */
+.quote-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 1rem; /* match .magazine-articles-wrapper */
+  margin: 40px 0;
+}
+
+.quote-wrapper .quote.block {
+  background-color: var(--dimgrey-color);
+  padding: 40px 24px;
+  max-width: 60%;
+  box-sizing: border-box;
+  font-family: var(--body-font-family);
+  text-align: left;
+}
+
+/* Reset nested spacing */
+.quote-wrapper .quote.block > div,
+.quote-wrapper .quote.block > div > div {
+  margin: 0;
+  padding: 0;
+}
+
+/* Heading */
+.quote-wrapper .quote.block h4 {
+  font-size: var(--heading-font-size-s);
+  margin: 0 0 16px;
+  font-weight: bold;
+}
+
+/* Main quote text */
+.quote-wrapper .quote.block p:first-of-type {
+  font-size: 32px;
+  line-height: 1.4;
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+
+/* Definition */
+.quote-wrapper .quote.block p:last-of-type {
+  font-size: var(--body-font-size-m);
+  margin: 0;
+  padding-top: 24px;
+  position: relative;
+  color:var(--text-color);
+}
+
+/* Decorative line */
+.quote-wrapper .quote.block p:last-of-type::before {
+  content: "";
+  display: block;
+  width: 140px;
+  height: 3px;
+  background-color: var(--yellow-color);
+  margin-bottom: 12px;
+}
+
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+ .quote-wrapper .quote.block {
+    max-width:100%
+  }
+}

@@ -10,14 +10,14 @@
 
     main.error .error-message-container .error-message-wrapper {
       flex: 0 1 100%;
-      font-family: sans-serif;
+    font-family: var(--body-font-family);
       font-size: 1rem;
     }
 
     .error-message-container .error-message-wrapper .error-message h2 {
-      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-family: var(--heading-font-family);
       font-weight: 300;
-      font-size: 2.2rem;
+      font-size: var(--heading-font-size-xl);
       line-height: 1.5;
     }
 

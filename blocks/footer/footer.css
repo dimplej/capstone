@@ -1,10 +1,10 @@
 /* Footer Wrapper */
 .footer-wrapper {
-  background-color: #1a1a1a;
-  color: #f0f0f0;
-  font-size: 14px;
+  background-color: var(--text-color);
+  color: var(--background-color);
+  font-size: var(--body-font-size-xs);
   padding: 20px 24px;
-  font-family: Arial, sans-serif;
+  font-family: var(--body-font-family);
 }
 
 /* Footer block layout */
@@ -63,13 +63,13 @@
 
 .footer .section:first-child .default-content-wrapper ul li a {
   text-decoration: none;
-  color: #ffffff;
+  color: var(--background-color);
   font-weight: 500;
-  font-size: 16px;
+  font-size:var(--body-font-size-s);
 }
 
 .footer .section:first-child .default-content-wrapper ul li a:hover {
-  color: #cccccc;
+  color: var(--background-color);
   text-decoration: underline;
 }
 
@@ -104,9 +104,9 @@
 /* Add "Follow us" text before social icons using pseudo-element */
 .footer .section:first-child .default-content-wrapper p:last-child::before {
   content: "Follow us"; /* Matches screenshot capitalization */
-  color: #ffffff; /* White text to match the rest of the footer */
+  color: var(--background-color); /* White text to match the rest of the footer */
   font-weight: 500; /* Match the weight of the navigation links */
-  font-size: 16px; /* Match the font size of the navigation links */
+  font-size:var(--body-font-size-s); /* Match the font size of the navigation links */
   margin-right: 0; /* No extra margin, controlled by gap */
   border: none; /* Ensure no border */
   padding: 0; /* Ensure no padding */
@@ -129,7 +129,7 @@
 .footer .section:first-child .default-content-wrapper p:last-child > span {
   display: flex; /* Aligns icons horizontally inside the box */
   gap: 8px; /* Space between icons */
-  background-color: #808080; /* Grey background for the box */
+  background-color:  var(--dark-color); /* Grey background for the box */
   border-radius: 6px; /* Rounded corners */
   padding: 11px; /* Internal spacing inside the box */
   margin: 10px 0; /* External spacing, adjusted to avoid excessive side margins */
@@ -169,7 +169,7 @@
 
 .footer .section:nth-child(2) .default-content-wrapper p:first-child::before {
   content: "Ⓒ 2025, WKND Site."; /* Updated year to 2025 */
-  color: #f0f0f0;
+  color:  var(--background-color);
   font-size: 12px;
 }
 
@@ -184,12 +184,12 @@
 }
 
 .footer a {
-  color: #ffffff;
+  color:  var(--background-color);
   text-decoration: underline;
 }
 
 .footer a:hover {
-  color: #cccccc;
+  color:  var(--background-color);
 }
 
 .footer .button-container > a.button {

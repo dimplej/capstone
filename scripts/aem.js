@@ -579,7 +579,7 @@ function decorateBlock(block) {
     block.dataset.blockStatus = 'initialized';
     wrapTextNodes(block);
     const blockWrapper = block.parentElement;
-    blockWrapper.classList.add(`${shortBlockName}-wrapper`);
+    if(shortBlockName != "top-bar" && shortBlockName != "form") blockWrapper.classList.add(`${shortBlockName}-wrapper`);
     const section = block.closest('.section');
     if (section) section.classList.add(`${shortBlockName}-container`);
   }
@@ -599,9 +599,13 @@ function decorateBlocks(main) {
  * @returns {Promise}
  */
 async function loadHeader(header) {
+  const topBarBlock = buildBlock('top-bar','');
   const headerBlock = buildBlock('header', '');
+  header.append(topBarBlock);
   header.append(headerBlock);
+  decorateBlock(topBarBlock);
   decorateBlock(headerBlock);
+  loadBlock(topBarBlock);
   return loadBlock(headerBlock);
 }
 

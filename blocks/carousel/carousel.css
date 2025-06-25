@@ -65,7 +65,7 @@
   top: -40%;
   left: 2%;
   color: black;
-  background-color: white;
+  background-color: var(--background-color);
   font-size: 1rem;
   height: max-content;
 }
@@ -73,14 +73,14 @@
 .carousel .carousel-slide .carousel-slide-content h2 {
   font-size: 2rem;
   font-weight: 100;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: var(--heading-font-family);
   margin: 0 0 0.5em 0;
 }
 
 /* Button styles */
 .carousel .carousel-slide .carousel-slide-content a.button {
-  background-color: #ffea00;
-  color: black;
+  background-color: var(--yellow-color);
+  color:  var(--text-color);
   font-size: unset;
   padding: 0.5em 1.2em;
   text-decoration: none;
@@ -106,7 +106,7 @@
   margin: 0;
   padding: 0;
   border-radius: 50%;
-  background-color: #dadada;
+  background-color: var(--background-color);
   border: none;
   transition: background-color 0.2s;
   cursor: pointer;
@@ -115,7 +115,7 @@
 .carousel .carousel-slide-indicator button:disabled,
 .carousel .carousel-slide-indicator button:hover,
 .carousel .carousel-slide-indicator button:focus-visible {
-  background-color: #131313;
+  background-color:  var(--text-color);
 }
 
 /* Prev/Next arrows */
@@ -133,7 +133,7 @@
 .carousel .carousel-navigation-buttons .slide-next {
   width: 20px;
   height: 20px;
-  background-color: white;
+  background-color:var(--background-color);
   background-repeat: no-repeat;
   background-position: center;
   border: none;
@@ -201,7 +201,7 @@
     width: 100%;
     margin: 0;
     padding: 16px;
-    background-color: white;
+    background-color: var(--background-color);
     text-align: left;
   }
 
@@ -215,19 +215,19 @@
   }
 
   .carousel .carousel-slide .carousel-slide-content h2 {
-    font-size: 20px;
+    font-size: var(--body-font-size-xs);
     margin: 0 0 10px;
   }
 
   .carousel .carousel-slide .carousel-slide-content p {
-    font-size: 14px;
+    font-size: var(--body-font-size-xs);
     line-height: 1.5;
     margin-bottom: 10px;
   }
 
   .carousel .carousel-slide .carousel-slide-content .button {
     padding: 10px 16px;
-    font-size: 14px;
+    font-size: var(--body-font-size-xs);
     border-radius: 4px;
   }
 
